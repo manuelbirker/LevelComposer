@@ -44,15 +44,12 @@ public class ObjectPlacer : MonoBehaviour
         {
             if (hit.transform.gameObject.CompareTag("Saveable"))
             {
-                if (!holding)
+                if (hit.transform.gameObject != holding.transform.gameObject)
                 {
-                    if (hit.transform.gameObject != holding.transform.gameObject)
-                    {
-                        selected = hit.transform.gameObject;
-                        canPlace = false;
-                    }
+                    selected = hit.transform.gameObject;
+                    canPlace = false;
                 }
-            }
+            } 
         }
         else
         {
@@ -114,12 +111,16 @@ public class ObjectPlacer : MonoBehaviour
         }
 
         holding = Instantiate(gm, transform);
+
+        holding.GetComponent<ObjectController>().isHeld = true;
+        holding.GetComponent<Collider>().enabled = false;
     }
 
     void Place(GameObject gm)
     {
         holding.transform.SetParent(null);
-
+        holding.GetComponent<ObjectController>().isHeld = false;
+        holding.GetComponent<Collider>().enabled = true;
         Spawn(gm);
     }
 }
