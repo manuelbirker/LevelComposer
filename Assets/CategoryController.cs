@@ -7,6 +7,9 @@ public class CategoryController : MonoBehaviour
 {
     public List<Category> categories;
 
+    public ToolTipController ttip;
+
+    public ObjectPlacer objPlacer;
 
     public void Activate(int id)
     {
@@ -21,6 +24,10 @@ public class CategoryController : MonoBehaviour
         {
             gm.button.SetActive(false);
         }
+
+
+        ttip.ChangeToolTip("");
+        ttip.ChangeToolTip(categories[id].tooltip);
     }
 
 
@@ -34,5 +41,8 @@ public class CategoryController : MonoBehaviour
                 gm2.SetActive(false);
             }
         }
+
+        objPlacer.DeSpawn();
+        ttip.ChangeToolTip("");
     }
 }

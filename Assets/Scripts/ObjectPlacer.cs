@@ -185,7 +185,7 @@ public class ObjectPlacer : MonoBehaviour
     }
 
 
-    void DeSpawn()
+    public void DeSpawn()
     {
         Destroy(holding);
         holding = null;
