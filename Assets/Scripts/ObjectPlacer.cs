@@ -158,7 +158,7 @@ public class ObjectPlacer : MonoBehaviour
 
     public int idCounter;
 
-    void Spawn(GameObject gm)
+    public void Spawn(GameObject gm)
     {
         DeSpawn();
 

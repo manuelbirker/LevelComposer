@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public  int bpm = 128;
-    public  float fps = 60f;
-
+    public int bpm = 128;
+    public float fps = 60;
+    public int levelLength = 20;
+    public int beatSize = 4;
 
     private static GameManager _instance;
 
@@ -29,16 +30,8 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-    }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = (int)Mathf.Round(fps);
     }
 }

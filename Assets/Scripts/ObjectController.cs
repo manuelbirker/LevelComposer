@@ -13,6 +13,10 @@ public class ObjectController : MonoBehaviour
     public bool canWobble = true;
     private Vector3 startAngle;
 
+    public AudioClip playOnTick;
+    public AudioClip playOnTouch;
+
+
     public void Wobble()
     {
         InvokeRepeating("WobbleTarget", 0, 0.5f);
