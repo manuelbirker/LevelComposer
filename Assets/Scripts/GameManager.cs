@@ -59,10 +59,12 @@ public class GameManager : MonoBehaviour
 
     public void PlayTest()
     {
+        _gameState = GameState.PlayTest;
         bpmController.Reset();
         playTestButton.SetActive(false);
         stopPlayTestButton.SetActive(true);
-        
+
+
         // TODO Change Play Button To Stop Button
         // TODO Deactivate Editor Interface and functions
         // TODO Stop Playtest when esc is pressed
@@ -72,10 +74,11 @@ public class GameManager : MonoBehaviour
 
     public void StopPlayTest()
     {
+        _gameState = GameState.Editor;
         bpmController.Reset();
         playTestButton.SetActive(true);
         stopPlayTestButton.SetActive(false);
-        
+
         // TODO Change Play Button back to Play Button
         // TODO Activate Editor Interface and functions
         // TODO Reset Player Position

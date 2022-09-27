@@ -19,10 +19,11 @@ public class BPMController : MonoBehaviour
     public int levelLength;
 
     void Start()
-    {
-        secPerBeat = GameManager.Instance.fps / GameManager.Instance.bpm;
-        Debug.Log(secPerBeat);
 
+
+    {
+        transform.position = startPosition;
+        secPerBeat = GameManager.Instance.fps / GameManager.Instance.bpm;
         startValue = transform.position;
 
         endValue =
@@ -31,7 +32,7 @@ public class BPMController : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance._gameState != GameManager.GameState.PlayTest ||
+        if (GameManager.Instance._gameState != GameManager.GameState.PlayTest &&
             GameManager.Instance._gameState != GameManager.GameState.PlayLevel)
         {
             return;
@@ -52,6 +53,7 @@ public class BPMController : MonoBehaviour
 
     public void Reset()
     {
+        transform.position = startPosition;
         secPerBeat = GameManager.Instance.fps / GameManager.Instance.bpm;
 
         startValue = transform.position;
@@ -64,6 +66,13 @@ public class BPMController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameManager.Instance._gameState != GameManager.GameState.PlayTest &&
+            GameManager.Instance._gameState != GameManager.GameState.PlayLevel)
+        {
+            return;
+        }
+
+
         if (timeElapsed < secPerBeat)
         {
             transform.position = Vector3.Lerp(
@@ -84,6 +93,13 @@ public class BPMController : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
+        if (GameManager.Instance._gameState != GameManager.GameState.PlayTest &&
+            GameManager.Instance._gameState != GameManager.GameState.PlayLevel)
+        {
+            return;
+        }
+
+
         if (col.transform.gameObject.GetComponent<ObjectController>() == null)
         {
             return;
