@@ -1807,8 +1807,10 @@ MonoBehaviour:
   fps: 60
   levelLength: 20
   beatSize: 4
-  bpmController: {fileID: 0}
+  bpmController: {fileID: 875667655}
   _gameState: 1
+  playTestButton: {fileID: 2118409476}
+  stopPlayTestButton: {fileID: 265665793}
 --- !u!4 &735489662
 Transform:
   m_ObjectHideFlags: 0
