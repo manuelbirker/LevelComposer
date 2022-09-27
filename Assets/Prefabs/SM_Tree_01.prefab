@@ -208,3 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345cd4a8b06ca83409daf9afda84ae12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHeld: 0
+  canWobble: 1
+  playOnTick: {fileID: 8300000, guid: 3743194b8a193f04cbaaebf8d43aa418, type: 3}
+  playOnTouch: {fileID: 0}

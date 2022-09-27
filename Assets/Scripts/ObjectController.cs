@@ -54,7 +54,10 @@ public class ObjectController : MonoBehaviour
     {
         if (other.transform.gameObject.CompareTag("Ticker"))
         {
-            Wobble();
+            if (!isHeld)
+            {
+                Wobble();
+            }
         }
     }
 }

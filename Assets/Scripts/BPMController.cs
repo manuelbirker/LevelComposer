@@ -77,19 +77,18 @@ public class BPMController : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
+    
+        if (col.transform.gameObject.GetComponent<ObjectController>() == null)
+        {
+            return;
+        }
+
         if (!col.transform.gameObject.CompareTag("Saveable"))
         {
             return;
         }
 
-        Debug.Log("Play Sound");
-        col.transform.gameObject.GetComponent<AudioSource>().Play();
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (!col.transform.gameObject.CompareTag("Saveable"))
+        if (col.transform.gameObject.GetComponent<ObjectController>().isHeld)
         {
             return;
         }
@@ -100,6 +99,7 @@ public class BPMController : MonoBehaviour
             AudioClip playOnTick = col.transform.gameObject.GetComponent<ObjectController>().playOnTick;
             col.transform.gameObject.GetComponent<AudioSource>().clip = playOnTick;
             col.transform.gameObject.GetComponent<AudioSource>().Play();
+            Debug.Log("Play Sound");
         }
     }
 }

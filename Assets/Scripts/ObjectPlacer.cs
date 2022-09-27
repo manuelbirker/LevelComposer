@@ -182,6 +182,8 @@ public class ObjectPlacer : MonoBehaviour
 
         layer = LayerMask.NameToLayer("Ignore Raycast");
         holding.layer = layer;
+        holding.GetComponent<ObjectController>().isHeld = true;
+        holding.GetComponent<Collider>().enabled = false;
     }
 
 
