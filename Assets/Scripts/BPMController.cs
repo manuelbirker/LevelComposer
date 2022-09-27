@@ -31,6 +31,13 @@ public class BPMController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance._gameState != GameManager.GameState.PlayTest ||
+            GameManager.Instance._gameState != GameManager.GameState.PlayLevel)
+        {
+            return;
+        }
+
+
         // Loop
         if (transform.position.x > levelLength)
         {
@@ -43,7 +50,7 @@ public class BPMController : MonoBehaviour
     }
 
 
-    void Reset()
+    public void Reset()
     {
         secPerBeat = GameManager.Instance.fps / GameManager.Instance.bpm;
 
