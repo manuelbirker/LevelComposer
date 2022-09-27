@@ -14,6 +14,8 @@ public class BPMController : MonoBehaviour
     private Vector3 startValue;
     private Vector3 endValue;
 
+    public GameObject levelEndMarker;
+
     public int levelLength = 20;
 
     void Start()
@@ -33,6 +35,9 @@ public class BPMController : MonoBehaviour
         {
             transform.position = startPosition;
         }
+
+
+        levelEndMarker.transform.position = new Vector3(levelLength, 0, 0);
     }
 
 
@@ -68,6 +73,11 @@ public class BPMController : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
+        if (!col.transform.gameObject.CompareTag("Saveable"))
+        {
+            return;
+        }
+
         Debug.Log("Play Sound");
         col.transform.gameObject.GetComponent<AudioSource>().Play();
     }
@@ -75,6 +85,12 @@ public class BPMController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (!col.transform.gameObject.CompareTag("Saveable"))
+        {
+            return;
+        }
+
+
         Debug.Log("Play Sound");
         col.transform.gameObject.GetComponent<AudioSource>().Play();
     }
