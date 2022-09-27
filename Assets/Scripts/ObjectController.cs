@@ -59,5 +59,19 @@ public class ObjectController : MonoBehaviour
                 Wobble();
             }
         }
+
+
+        if (other.transform.gameObject.CompareTag("Player"))
+        {
+            if (!isHeld)
+            {
+                if (playOnTouch != null)
+                {
+                    GetComponent<AudioSource>().clip = playOnTouch;
+                    GetComponent<AudioSource>().Play();
+                    Debug.Log("Play Sound (Touch)");
+                }
+            }
+        }
     }
 }

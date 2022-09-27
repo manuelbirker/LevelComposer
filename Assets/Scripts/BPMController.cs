@@ -77,7 +77,6 @@ public class BPMController : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-    
         if (col.transform.gameObject.GetComponent<ObjectController>() == null)
         {
             return;
@@ -99,7 +98,7 @@ public class BPMController : MonoBehaviour
             AudioClip playOnTick = col.transform.gameObject.GetComponent<ObjectController>().playOnTick;
             col.transform.gameObject.GetComponent<AudioSource>().clip = playOnTick;
             col.transform.gameObject.GetComponent<AudioSource>().Play();
-            Debug.Log("Play Sound");
+            Debug.Log("Play Sound (Tick)");
         }
     }
 }
