@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mono.Cecil.Cil;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BPMController : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class BPMController : MonoBehaviour
     public GameObject levelEndMarker;
 
     public int levelLength;
+
+    public Toggle tickState;
+    public AudioClip tickerSound;
 
     void Start()
 
@@ -48,6 +53,17 @@ public class BPMController : MonoBehaviour
         levelLength = GameManager.Instance.levelLength;
         beatSize = GameManager.Instance.beatSize;
         levelEndMarker.transform.position = new Vector3(levelLength, 0, 0);
+    }
+
+
+    public void OnTick()
+    {
+        if (tickState.isOn)
+        {
+            transform.gameObject.GetComponent<AudioSource>().clip = tickerSound;
+            transform.gameObject.GetComponent<AudioSource>().Play();
+            Debug.Log("Play Sound (Ticker)");
+        }
     }
 
 
@@ -88,6 +104,7 @@ public class BPMController : MonoBehaviour
             endValue =
                 new Vector3(transform.position.x + beatSize, transform.position.y, 0);
             timeElapsed = 0;
+            OnTick();
         }
     }
 
@@ -119,9 +136,9 @@ public class BPMController : MonoBehaviour
         if (col.transform.gameObject.GetComponent<ObjectController>().playOnTick != null)
         {
             AudioClip playOnTick = col.transform.gameObject.GetComponent<ObjectController>().playOnTick;
-            col.transform.gameObject.GetComponent<AudioSource>().clip = playOnTick;
+            col.transform.gameObject.GetComponent<AudioSource>().clip = playOnTick; 
             col.transform.gameObject.GetComponent<AudioSource>().Play();
-            Debug.Log("Play Sound (Tick)");
+            Debug.Log("Play Sound (On Tick)");
         }
     }
 }

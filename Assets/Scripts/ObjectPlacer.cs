@@ -19,13 +19,16 @@ public class ObjectPlacer : MonoBehaviour
         holding = null;
     }
 
-    void Update()
-    {
-        CursorPosition();
 
-        CheckForOverlap();
+    void InputControls()
+    {
+        if (GameManager.Instance.settingsOpen)
+        {
+            return;
+        }
 
         pointerOverUI = EventSystem.current.IsPointerOverGameObject();
+
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -46,8 +49,6 @@ public class ObjectPlacer : MonoBehaviour
             }
         }
 
-
-        ShowGhostObject();
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             Destroy(selected);
@@ -72,6 +73,18 @@ public class ObjectPlacer : MonoBehaviour
         {
             snapToGrid = false;
         }
+    }
+
+
+    void Update()
+    {
+        CursorPosition();
+
+        CheckForOverlap();
+
+        InputControls();
+
+        ShowGhostObject();
     }
 
     public void CheckForOverlap()
@@ -121,8 +134,8 @@ public class ObjectPlacer : MonoBehaviour
         }
         else
         {
-            Vector3 pos = new Vector3(Mathf.Round(worldPosition.x / 1) * 1,
-                Mathf.Round(worldPosition.y / 1) * 1, 0);
+            Vector3 pos = new Vector3(Mathf.Round(worldPosition.x / 0.25f) * 0.25f,
+                Mathf.Round(worldPosition.y / 0.25f) * 0.25f, 0);
 
             transform.position = pos;
         }

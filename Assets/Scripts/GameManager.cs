@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +11,15 @@ public class GameManager : MonoBehaviour
     public float fps = 60;
     public int levelLength = 20;
     public int beatSize = 4;
+
+    // Settings
+    public string levelName;
+    public TMP_InputField levelNameInput;
+    public TMP_InputField levelLengthInput;
+    public GameObject settingsUI;
+    public bool settingsOpen;
+
+    public GameObject editorUI;
 
     public BPMController bpmController;
 
@@ -78,9 +89,51 @@ public class GameManager : MonoBehaviour
         bpmController.Reset();
         playTestButton.SetActive(true);
         stopPlayTestButton.SetActive(false);
+        bpmController.Reset();
 
         // TODO Change Play Button back to Play Button
         // TODO Activate Editor Interface and functions
         // TODO Reset Player Position
+    }
+
+
+    private void Start()
+    {
+        if (_gameState == GameState.Editor)
+        {
+            levelName = "NewLevel_" + Random.Range(0, 9999);
+            levelNameInput.text = levelName;
+        }
+
+        bpmController.levelLength = levelLength;
+        bpmController.Reset();
+    }
+
+    public void OpenSettings()
+    {
+        settingsOpen = true;
+        settingsUI.SetActive(true);
+        editorUI.SetActive(false);
+
+        levelLengthInput.text = levelLength.ToString();
+        levelNameInput.text = levelName;
+    }
+
+    public void CancelSettings()
+    {
+        settingsOpen = false;
+        settingsUI.SetActive(false);
+        editorUI.SetActive(true);
+    }
+
+    public void SaveSettings()
+    {
+        settingsOpen = false;
+        levelName = levelNameInput.text;
+        levelLength = int.Parse(levelLengthInput.text);
+        bpmController.levelLength = levelLength;
+        settingsUI.SetActive(false);
+        editorUI.SetActive(true);
+        bpmController.Reset();
     }
 }
