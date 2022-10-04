@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +8,7 @@ public class GameManager : MonoBehaviour
     public float fps = 60;
     public int levelLength = 20;
     public int beatSize = 4;
+    public int ambianceID = 0;
 
     // Settings
     public string levelName;
@@ -18,6 +16,8 @@ public class GameManager : MonoBehaviour
     public TMP_InputField levelLengthInput;
     public GameObject settingsUI;
     public bool settingsOpen;
+    public TMP_Dropdown ambiance;
+    public AmbianceController ambController;
 
     public GameObject editorUI;
 
@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
     }
 
     public GameState _gameState;
-
 
     public GameObject playTestButton;
     public GameObject stopPlayTestButton;
@@ -75,6 +74,11 @@ public class GameManager : MonoBehaviour
         playTestButton.SetActive(false);
         stopPlayTestButton.SetActive(true);
 
+        if (ambianceID != 0)
+        {
+            ambController.Play();
+        }
+
 
         // TODO Change Play Button To Stop Button
         // TODO Deactivate Editor Interface and functions
@@ -90,7 +94,7 @@ public class GameManager : MonoBehaviour
         playTestButton.SetActive(true);
         stopPlayTestButton.SetActive(false);
         bpmController.Reset();
-
+        ambController.Stop();
         // TODO Change Play Button back to Play Button
         // TODO Activate Editor Interface and functions
         // TODO Reset Player Position
@@ -117,6 +121,7 @@ public class GameManager : MonoBehaviour
 
         levelLengthInput.text = levelLength.ToString();
         levelNameInput.text = levelName;
+        ambiance.value = ambianceID;
     }
 
     public void CancelSettings()
@@ -135,5 +140,7 @@ public class GameManager : MonoBehaviour
         settingsUI.SetActive(false);
         editorUI.SetActive(true);
         bpmController.Reset();
+        ambianceID = ambiance.value;
+        ambController.Change(ambianceID);
     }
 }
