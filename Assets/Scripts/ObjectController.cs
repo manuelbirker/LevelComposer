@@ -16,6 +16,7 @@ public class ObjectController : MonoBehaviour
     public AudioClip playOnTick;
     public AudioClip playOnTouch;
 
+    public string toolTip = "";
 
     public void Wobble()
     {

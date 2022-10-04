@@ -31,6 +31,9 @@ public class CategoryController : MonoBehaviour
     }
 
 
+    
+    
+    
     public void Cancel()
     {
         foreach (Category gm in categories)

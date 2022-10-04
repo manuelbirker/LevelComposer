@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 135062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 487506}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHeld: 0
   canWobble: 1
-  playOnTick: {fileID: 0}
+  playOnTick: {fileID: 8300000, guid: 55ab5c2bf2a5f114d84355446b1d1f52, type: 3}
   playOnTouch: {fileID: 0}
 --- !u!82 &-9126932261118452532
 AudioSource:
@@ -129,7 +129,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 78494a5807668a24b8e2c937cd37c0da, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.334
   m_Pitch: 1
   Loop: 0
   Mute: 0

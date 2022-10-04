@@ -4835,7 +4835,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8547170938511414599}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.21201259, y: 0.35808998, z: 0.23955184}
@@ -4950,5 +4950,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHeld: 0
   canWobble: 1
-  playOnTick: {fileID: 0}
+  playOnTick: {fileID: 8300000, guid: 4e6ffa7559928a542b96f2a47c1cd487, type: 3}
   playOnTouch: {fileID: 0}

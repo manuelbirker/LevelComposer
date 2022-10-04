@@ -10,9 +10,14 @@ public class ObjectPlacer : MonoBehaviour
     public GameObject holding;
     public GameObject selected;
     public bool canPlace;
-    public bool pointerOverUI;
 
     public bool snapToGrid = false;
+
+    public int canPlaceCheck;
+    public int pointerInDeadZone;
+    public int pointerIsOverUI;
+
+    public ToolTipController ttip;
 
     private void Start()
     {
@@ -26,8 +31,6 @@ public class ObjectPlacer : MonoBehaviour
         {
             return;
         }
-
-        pointerOverUI = EventSystem.current.IsPointerOverGameObject();
 
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -55,16 +58,6 @@ public class ObjectPlacer : MonoBehaviour
         }
 
 
-        if (pointerOverUI)
-        {
-            canPlace = false;
-        }
-        else
-        {
-            canPlace = true;
-        }
-
-
         if (Input.GetKey(KeyCode.LeftControl))
         {
             snapToGrid = true;
@@ -85,6 +78,28 @@ public class ObjectPlacer : MonoBehaviour
         InputControls();
 
         ShowGhostObject();
+
+
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            pointerIsOverUI = 1;
+        }
+        else
+        {
+            pointerIsOverUI = 0;
+        }
+
+
+        canPlaceCheck = pointerIsOverUI + pointerInDeadZone;
+
+        if (canPlaceCheck == 0)
+        {
+            canPlace = true;
+        }
+        else
+        {
+            canPlace = false;
+        }
     }
 
     public void CheckForOverlap()
@@ -93,15 +108,15 @@ public class ObjectPlacer : MonoBehaviour
         RaycastHit hit;
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 100000f, ~LayerMask.NameToLayer("Ignore Raycast")))
         {
             if (hit.transform.gameObject.CompareTag("Deadzone"))
             {
-                canPlace = false;
+                pointerInDeadZone = 1;
             }
             else
             {
-                canPlace = true;
+                pointerInDeadZone = 0;
                 selected = null;
             }
 
@@ -114,6 +129,10 @@ public class ObjectPlacer : MonoBehaviour
             {
                 selected = null;
             }
+        }
+        else
+        {
+            pointerInDeadZone = 0;
         }
     }
 
@@ -180,6 +199,14 @@ public class ObjectPlacer : MonoBehaviour
         holding.layer = layer;
         holding.GetComponent<ObjectController>().isHeld = true;
         holding.GetComponent<Collider>().enabled = false;
+
+
+        if (holding.GetComponent<ObjectController>().toolTip != "" &&
+            holding.GetComponent<ObjectController>().toolTip != " " &&
+            holding.GetComponent<ObjectController>().toolTip != null)
+        {
+            ttip.ChangeToolTip(holding.GetComponent<ObjectController>().toolTip);
+        }
     }
 
     void Place(GameObject gm)
