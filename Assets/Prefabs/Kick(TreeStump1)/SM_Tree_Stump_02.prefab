@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHeld: 0
   canWobble: 1
-  playOnTick: {fileID: 0}
+  playOnTick: {fileID: 8300000, guid: 539ece7da7364c34fbc94b861a7a10c8, type: 3}
   playOnTouch: {fileID: 0}
 --- !u!82 &8691600167946286677
 AudioSource:
