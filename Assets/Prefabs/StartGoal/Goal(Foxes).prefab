@@ -6503,7 +6503,7 @@ GameObject:
   - component: {fileID: 2426653288712878233}
   m_Layer: 0
   m_Name: Goal(Foxes)
-  m_TagString: Untagged
+  m_TagString: Saveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6564,7 +6564,7 @@ AudioSource:
   m_GameObject: {fileID: 4904306454344682382}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 78494a5807668a24b8e2c937cd37c0da, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
