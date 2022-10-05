@@ -58,6 +58,7 @@ public class MainMenuController : MonoBehaviour
     public void LoadEditor()
     {
         whichOption = "Editor";
+        selectedLevel = "";
         SceneManager.LoadScene("Editor");
 
         // TODO Load Editor
