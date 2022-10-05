@@ -46,11 +46,11 @@ public class MainMenuController : MonoBehaviour
 
         foreach (string file in System.IO.Directory.GetFiles(filePath))
         {
-            string _file = file.Replace(".txt", "").Trim();
-            string __file = _file.Replace("Assets/Levels", "").Trim();
-            string ___file = __file.Replace(".meta", "").Trim();
+            string[] _file = file.Split("/");
+            string[] __file = _file[2].Split(".");
+            string ___file = __file[0];
 
-            levels.options.Add(new TMP_Dropdown.OptionData());
+            levels.options.Add(new TMP_Dropdown.OptionData(___file));
         }
     }
 
