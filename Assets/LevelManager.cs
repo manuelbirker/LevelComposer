@@ -56,14 +56,26 @@ public class LevelManager : MonoBehaviour
         StreamWriter writer = new StreamWriter(filePath, false);
 
 
+        string info2 = "levelname:" + "#/#" + GameManager.Instance.levelName;
+        writer.WriteLine(info2);
+
+        info2 = "levelLength:" + "#/#" + GameManager.Instance.levelLength;
+        writer.WriteLine(info2);
+
+        info2 = "ambiance:" + "#/#" + GameManager.Instance.ambianceID;
+        writer.WriteLine(info2);
+
+
         for (int i = 0; i < assetsToSave.Length; i++)
         {
-            string info = assetNames[i] + "#/#" + assetPositions[i].x.ToString() + "#/#" + assetPositions[i].y.ToString() +
+            string info = "object:" + "#/#" + assetNames[i] + "#/#" + assetPositions[i].x.ToString() + "#/#" +
+                          assetPositions[i].y.ToString() +
                           "#/#" +
                           assetPositions[i].z.ToString();
 
             writer.WriteLine(info);
         }
+
 
         writer.Close();
     }
@@ -103,10 +115,29 @@ public class LevelManager : MonoBehaviour
             {
                 string[] data = reader2.ReadLine().Split("#/#");
 
-                assetNames[i] = data[0];
-                assetPositions[i].x = float.Parse(data[1]);
-                assetPositions[i].y = float.Parse(data[2]);
-                assetPositions[i].z = float.Parse(data[3]);
+                if (data[0] == "levelName:")
+                {
+                    GameManager.Instance.levelName = data[1];
+                }
+
+                if (data[0] == "levelLenght:")
+                {
+                    GameManager.Instance.levelLength = int.Parse(data[1]);
+                }
+
+                if (data[0] == "ambiance:")
+                {
+                    GameManager.Instance.ambianceID = int.Parse(data[1]);
+                }
+
+
+                if (data[0] == "object:")
+                {
+                    assetNames[i] = data[1];
+                    assetPositions[i].x = float.Parse(data[2]);
+                    assetPositions[i].y = float.Parse(data[3]);
+                    assetPositions[i].z = float.Parse(data[4]);
+                }
             }
         }
 
