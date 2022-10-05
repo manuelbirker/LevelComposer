@@ -1,6 +1,9 @@
+using System;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +27,16 @@ public class GameManager : MonoBehaviour
     public BPMController bpmController;
 
     private static GameManager _instance;
+
+    public ToolTipController ttip;
+
+
+    public int goalCount = 0;
+    public int startCount = 0;
+
+
+    public GameObject playerPrefab;
+    public GameObject _player;
 
     public static GameManager Instance
     {
@@ -49,6 +62,12 @@ public class GameManager : MonoBehaviour
     public GameObject stopPlayTestButton;
 
 
+    public GameObject start;
+    public GameObject goal;
+
+    public CinemachineVirtualCamera vcam;
+    public GameObject editorMover;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -69,6 +88,18 @@ public class GameManager : MonoBehaviour
 
     public void PlayTest()
     {
+        if (startCount == 0)
+        {
+            ttip.ChangeToolTip("There is no startposition in your Level!");
+            return;
+        }
+
+
+        start = GameObject.Find("Start(Clone)");
+        _player = Instantiate(playerPrefab);
+        _player.transform.position = start.transform.position;
+        _player.transform.rotation = Quaternion.Euler(0, 0, 0);
+        vcam.Follow = _player.transform;
         _gameState = GameState.PlayTest;
         bpmController.Reset();
         playTestButton.SetActive(false);
@@ -80,24 +111,27 @@ public class GameManager : MonoBehaviour
         }
 
 
-        // TODO Change Play Button To Stop Button
         // TODO Deactivate Editor Interface and functions
-        // TODO Stop Playtest when esc is pressed
-        // TODO Reset Player Position
     }
 
 
     public void StopPlayTest()
     {
+        start = null;
+        vcam.Follow = editorMover.transform;
         _gameState = GameState.Editor;
         bpmController.Reset();
         playTestButton.SetActive(true);
         stopPlayTestButton.SetActive(false);
         bpmController.Reset();
         ambController.Stop();
-        // TODO Change Play Button back to Play Button
+
+        Destroy(_player);
+
+
+
         // TODO Activate Editor Interface and functions
-        // TODO Reset Player Position
+
     }
 
 

@@ -19,6 +19,7 @@ public class ObjectPlacer : MonoBehaviour
 
     public ToolTipController ttip;
 
+
     private void Start()
     {
         holding = null;
@@ -54,6 +55,20 @@ public class ObjectPlacer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            if (selected != null)
+            {
+                if (selected.name == "Start")
+                {
+                    GameManager.Instance.startCount = 0;
+                }
+
+                if (selected.name == "Goal")
+                {
+                    GameManager.Instance.goalCount = 0;
+                }
+            }
+
+
             Destroy(selected);
         }
 
@@ -160,18 +175,18 @@ public class ObjectPlacer : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter(Collision col)
     {
         selected = col.gameObject;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay(Collision collision)
     {
         selected = collision.gameObject;
     }
 
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnCollisionExit(Collision other)
     {
         selected = null;
     }
@@ -195,6 +210,29 @@ public class ObjectPlacer : MonoBehaviour
         DeSpawn();
 
         holding = Instantiate(gm, transform);
+
+
+        if (holding.name == "Start(Clone)")
+        {
+            if (GameManager.Instance.startCount > 0)
+            {
+                ttip.ChangeToolTip("Start already in level!");
+                DeSpawn();
+                return;
+            }
+        }
+
+        if (holding.name == "Goal(Clone)")
+        {
+            if (GameManager.Instance.goalCount > 0)
+            {
+                ttip.ChangeToolTip("Goal already in level!");
+                DeSpawn();
+                return;
+            }
+        }
+
+
         int layer = LayerMask.NameToLayer("Ignore Raycast");
         holding.layer = layer;
         holding.GetComponent<ObjectController>().isHeld = true;
@@ -211,9 +249,38 @@ public class ObjectPlacer : MonoBehaviour
 
     void Place(GameObject gm)
     {
+        if (holding.name == "Start(Clone)")
+        {
+            if (GameManager.Instance.startCount > 0)
+            {
+                ttip.ChangeToolTip("Start already in level!");
+                DeSpawn();
+                return;
+            }
+            else
+            {
+                GameManager.Instance.startCount = 1;
+            }
+        }
+
+        if (holding.name == "Goal(Clone)")
+        {
+            if (GameManager.Instance.goalCount > 0)
+            {
+                ttip.ChangeToolTip("Goal already in level!");
+                DeSpawn();
+                return;
+            }
+            else
+            {
+                GameManager.Instance.goalCount = 1;
+            }
+        }
+
+        holding.name = holding.name.Replace("(Clone)", "").Trim();
+
         int layer = LayerMask.NameToLayer("Default");
         holding.layer = layer;
-        holding.name = idCounter.ToString();
         holding.transform.parent = null;
         holding.GetComponent<ObjectController>().isHeld = false;
         holding.GetComponent<Collider>().enabled = true;

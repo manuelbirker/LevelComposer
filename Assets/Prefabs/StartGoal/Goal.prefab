@@ -6502,7 +6502,7 @@ GameObject:
   - component: {fileID: -6998929120968031820}
   - component: {fileID: 2426653288712878233}
   m_Layer: 0
-  m_Name: Goal(Foxes)
+  m_Name: Goal
   m_TagString: Saveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
