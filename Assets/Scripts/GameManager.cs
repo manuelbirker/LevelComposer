@@ -95,9 +95,25 @@ public class GameManager : MonoBehaviour
         }
 
 
-        start = GameObject.Find("Start(Clone)");
+        start = GameObject.Find("Start");
+        goal = GameObject.Find("Goal");
+
+
+        if (goal != null)
+        {
+            goal.GetComponent<Renderer>().enabled = false;
+        }
+
+        if (start != null)
+        {
+            start.GetComponent<Renderer>().enabled = false;
+        }
+
+
         _player = Instantiate(playerPrefab);
         _player.transform.position = start.transform.position;
+
+
         _player.transform.rotation = Quaternion.Euler(0, 0, 0);
         vcam.Follow = _player.transform;
         _gameState = GameState.PlayTest;
@@ -117,7 +133,18 @@ public class GameManager : MonoBehaviour
 
     public void StopPlayTest()
     {
-        start = null;
+        if (goal != null)
+        {
+            goal.GetComponent<Renderer>().enabled = true;
+            goal = null;
+        }
+
+        if (start != null)
+        {
+            start.GetComponent<Renderer>().enabled = true;
+            start = null;
+        }
+
         vcam.Follow = editorMover.transform;
         _gameState = GameState.Editor;
         bpmController.Reset();
@@ -129,9 +156,7 @@ public class GameManager : MonoBehaviour
         Destroy(_player);
 
 
-
         // TODO Activate Editor Interface and functions
-
     }
 
 
