@@ -94,7 +94,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121632204772480}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.33469224
   m_Height: 3.907669
@@ -212,3 +212,4 @@ MonoBehaviour:
   canWobble: 1
   playOnTick: {fileID: 8300000, guid: f06d7c449847497498d771b734b69594, type: 3}
   playOnTouch: {fileID: 0}
+  toolTip: 
