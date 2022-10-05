@@ -304,8 +304,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHeld: 0
   canWobble: 1
-  playOnTick: {fileID: 0}
+  playOnTick: {fileID: 8300000, guid: 1c0455deed953904ba983127cd2a7dac, type: 3}
   playOnTouch: {fileID: 0}
+  toolTip: 
 --- !u!65 &-8647689793481126492
 BoxCollider:
   m_ObjectHideFlags: 0
