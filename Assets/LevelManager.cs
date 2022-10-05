@@ -161,6 +161,25 @@ public class LevelManager : MonoBehaviour
         }
 
 
-        GameManager.Instance.SaveSettings();
+        GameManager.Instance.SaveSettingsAfterLoad();
+
+
+        if (GameObject.Find("Start"))
+        {
+            GameManager.Instance.startCount = 1;
+        }
+        else
+        {
+            GameManager.Instance.startCount = 1;
+        }
+
+        if (GameObject.Find("Goal"))
+        {
+            GameManager.Instance.goalCount = 0;
+        }
+        else
+        {
+            GameManager.Instance.goalCount = 0;
+        }
     }
 }

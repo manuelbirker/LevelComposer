@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-       // editorUI.SetActive(false);
+        // editorUI.SetActive(false);
         start = GameObject.Find("Start");
         goal = GameObject.Find("Goal");
 
@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
             start = null;
         }
 
-       // editorUI.SetActive(true);
+        // editorUI.SetActive(true);
         vcam.Follow = editorMover.transform;
         _gameState = GameState.Editor;
         bpmController.Reset();
@@ -208,5 +208,16 @@ public class GameManager : MonoBehaviour
         bpmController.Reset();
         ambianceID = ambiance.value;
         ambController.Change(ambianceID);
+    }
+
+
+    public void SaveSettingsAfterLoad()
+    {
+        settingsOpen = false;
+        ambController.Change(ambianceID);
+        settingsUI.SetActive(false);
+        editorUI.SetActive(true);
+        bpmController.levelLength = levelLength;
+        bpmController.Reset();
     }
 }
