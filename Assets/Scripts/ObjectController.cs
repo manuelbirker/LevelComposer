@@ -64,13 +64,18 @@ public class ObjectController : MonoBehaviour
 
         if (other.transform.gameObject.CompareTag("Player"))
         {
-            if (!isHeld)
+            if (playOnTouch != null)
             {
-                if (playOnTouch != null)
+                GetComponent<AudioSource>().clip = playOnTouch;
+                GetComponent<AudioSource>().Play();
+
+                Debug.Log("Play Sound (Touch)");
+
+
+                if (this.gameObject.name == "Coin")
                 {
-                    GetComponent<AudioSource>().clip = playOnTouch;
-                    GetComponent<AudioSource>().Play();
-                    Debug.Log("Play Sound (Touch)");
+                    this.gameObject.GetComponent<Collider>().enabled = false;
+                    this.gameObject.GetComponent<Renderer>().enabled = false;
                 }
             }
         }

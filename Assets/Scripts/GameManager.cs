@@ -94,19 +94,19 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-
+       // editorUI.SetActive(false);
         start = GameObject.Find("Start");
         goal = GameObject.Find("Goal");
 
 
         if (goal != null)
         {
-            goal.GetComponent<Renderer>().enabled = false;
+            goal.SetActive(false);
         }
 
         if (start != null)
         {
-            start.GetComponent<Renderer>().enabled = false;
+            start.SetActive(false);
         }
 
 
@@ -114,7 +114,9 @@ public class GameManager : MonoBehaviour
         _player.transform.position = start.transform.position;
 
 
-        _player.transform.rotation = Quaternion.Euler(0, 0, 0);
+        _player.transform.rotation = Quaternion.Euler(0, 90, 0);
+
+
         vcam.Follow = _player.transform;
         _gameState = GameState.PlayTest;
         bpmController.Reset();
@@ -125,9 +127,6 @@ public class GameManager : MonoBehaviour
         {
             ambController.Play();
         }
-
-
-        // TODO Deactivate Editor Interface and functions
     }
 
 
@@ -135,16 +134,17 @@ public class GameManager : MonoBehaviour
     {
         if (goal != null)
         {
-            goal.GetComponent<Renderer>().enabled = true;
+            goal.SetActive(true);
             goal = null;
         }
 
         if (start != null)
         {
-            start.GetComponent<Renderer>().enabled = true;
+            start.SetActive(true);
             start = null;
         }
 
+       // editorUI.SetActive(true);
         vcam.Follow = editorMover.transform;
         _gameState = GameState.Editor;
         bpmController.Reset();
@@ -156,7 +156,14 @@ public class GameManager : MonoBehaviour
         Destroy(_player);
 
 
-        // TODO Activate Editor Interface and functions
+        foreach (GameObject gameObj in GameObject.FindObjectsOfType<GameObject>())
+        {
+            if (gameObj.name == "Coin")
+            {
+                gameObj.gameObject.GetComponent<Collider>().enabled = true;
+                gameObj.gameObject.GetComponent<Renderer>().enabled = true;
+            }
+        }
     }
 
 

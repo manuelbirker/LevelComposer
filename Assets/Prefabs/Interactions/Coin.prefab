@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7080718789866733363}
   - component: {fileID: 8721262609729556051}
   m_Layer: 0
-  m_Name: CoinGold
+  m_Name: Coin
   m_TagString: Saveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4852,7 +4852,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 78494a5807668a24b8e2c937cd37c0da, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.619
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4949,6 +4949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHeld: 0
-  canWobble: 1
-  playOnTick: {fileID: 8300000, guid: 4e6ffa7559928a542b96f2a47c1cd487, type: 3}
-  playOnTouch: {fileID: 0}
+  canWobble: 0
+  playOnTick: {fileID: 0}
+  playOnTouch: {fileID: 8300000, guid: ab2f97475982b784785a92e271423605, type: 3}
+  toolTip: 
