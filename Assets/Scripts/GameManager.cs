@@ -219,5 +219,6 @@ public class GameManager : MonoBehaviour
         editorUI.SetActive(true);
         bpmController.levelLength = levelLength;
         bpmController.Reset();
+        editorMover.transform.position = new Vector3(0, 0, 0);
     }
 }
