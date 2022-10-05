@@ -46,14 +46,9 @@ public class GameManager : MonoBehaviour
 
     public enum GameState
     {
-        MainMenu,
         Editor,
         PlayTest,
-        LevelSelect,
         PlayLevel,
-        Tutorial,
-        Controls,
-        Credits
     }
 
     public GameState _gameState;
