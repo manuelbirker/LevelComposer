@@ -155,7 +155,9 @@ public class LevelManager : MonoBehaviour
             {
                 if (possibleObjects[j].name == assetNames[i])
                 {
-                    Instantiate(possibleObjects[j], assetPositions[i], Quaternion.identity);
+                    GameObject spawn = Instantiate(possibleObjects[j], assetPositions[i], Quaternion.identity);
+
+                    spawn.name = spawn.name.Replace("(Clone)", "").Trim();
                 }
             }
         }

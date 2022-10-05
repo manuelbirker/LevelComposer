@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6212875241985541540}
   - component: {fileID: 6212875241985541539}
   m_Layer: 0
-  m_Name: Trampoline UP
+  m_Name: TrampolineUp
   m_TagString: Saveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   isHeld: 0
   canWobble: 0
   playOnTick: {fileID: 0}
-  playOnTouch: {fileID: 0}
+  playOnTouch: {fileID: 8300000, guid: 539ece7da7364c34fbc94b861a7a10c8, type: 3}
   toolTip: 
 --- !u!82 &6212875241985541539
 AudioSource:
