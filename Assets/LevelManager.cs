@@ -56,7 +56,7 @@ public class LevelManager : MonoBehaviour
         StreamWriter writer = new StreamWriter(filePath, false);
 
 
-        string info2 = "levelname:" + "#/#" + GameManager.Instance.levelName;
+        string info2 = "levelName:" + "#/#" + GameManager.Instance.levelName;
         writer.WriteLine(info2);
 
         info2 = "levelLength:" + "#/#" + GameManager.Instance.levelLength;
@@ -120,7 +120,7 @@ public class LevelManager : MonoBehaviour
                     GameManager.Instance.levelName = data[1];
                 }
 
-                if (data[0] == "levelLenght:")
+                if (data[0] == "levelLength:")
                 {
                     GameManager.Instance.levelLength = int.Parse(data[1]);
                 }
@@ -159,5 +159,8 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+
+
+        GameManager.Instance.SaveSettings();
     }
 }
