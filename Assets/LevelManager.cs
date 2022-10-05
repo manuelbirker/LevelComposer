@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
     public string loadLevelName;
     public TMP_InputField loadLevelInputField;
 
+    public ToolTipController ttip;
+
     private void Update()
     {
         if (loadLevelInputField.text.Length > 0)
@@ -78,6 +80,9 @@ public class LevelManager : MonoBehaviour
 
 
         writer.Close();
+
+
+        ttip.ChangeToolTip("Level saved!");
     }
 
 
@@ -90,8 +95,12 @@ public class LevelManager : MonoBehaviour
 
         string filePath = "Assets/Levels/" + loadLevelName + ".txt";
 
-
+  
         StreamReader reader = new StreamReader(filePath);
+        
+        
+        
+        
         int numOfLine = 0;
 
         while (reader.ReadLine() != null)
@@ -183,5 +192,8 @@ public class LevelManager : MonoBehaviour
         {
             GameManager.Instance.goalCount = 0;
         }
+
+
+        ttip.ChangeToolTip("Level loaded!");
     }
 }
