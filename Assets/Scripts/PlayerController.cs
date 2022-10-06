@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,10 @@ public class PlayerController : MonoBehaviour
     public int direction = 1;
 
     public Animator anim;
+
+
+    public AudioClip deathSound;
+    public AudioSource aS;
 
     private void Start()
     {
@@ -88,6 +93,48 @@ public class PlayerController : MonoBehaviour
         else
         {
             isGrounded = false;
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.transform.gameObject.CompareTag("Death"))
+        {
+            this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
+            aS.clip = deathSound;
+            aS.Play();
+        }
+    }
+
+    private void OnTriggerStay(Collider collision)
+    {
+        if (collision.transform.gameObject.CompareTag("Death"))
+        {
+            this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
+            aS.clip = deathSound;
+            aS.Play();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.gameObject.CompareTag("Death"))
+        {
+            this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
+            aS.clip = deathSound;
+            aS.Play();
+        }
+    }
+
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform.gameObject.CompareTag("Death"))
+        {
+            this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
+            aS.clip = deathSound;
+            aS.Play();
         }
     }
 }

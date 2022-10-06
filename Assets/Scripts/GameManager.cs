@@ -2,6 +2,7 @@ using System;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -64,6 +65,12 @@ public class GameManager : MonoBehaviour
     public CinemachineVirtualCamera vcam_game;
     public GameObject editorMover;
 
+
+    public GameObject ingameUI;
+    public int score = 0;
+    public TMP_Text scoreText;
+    public GameObject editorObjects;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -125,6 +132,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        scoreText.text = "Score: "+score.ToString();
+    }
+
     public void PlayMode()
     {
         editorUI.SetActive(false);
@@ -154,6 +166,10 @@ public class GameManager : MonoBehaviour
 
         _gameState = GameState.PlayLevel;
         bpmController.Reset();
+
+
+        editorObjects.SetActive(false);
+        bpmController.transform.gameObject.GetComponent<Renderer>().enabled = false;
 
 
         if (ambianceID != 0)
@@ -213,7 +229,7 @@ public class GameManager : MonoBehaviour
             levelNameInput.text = levelName;
         }
 
-
+        score = 0;
         bpmController.levelLength = levelLength;
         bpmController.Reset();
 
@@ -221,11 +237,18 @@ public class GameManager : MonoBehaviour
         if (_gameState == GameState.PlayLevel)
         {
             PlayMode();
+            ingameUI.SetActive(true);
         }
 
         if (_gameState == GameState.Editor)
         {
+            ingameUI.SetActive(false);
         }
+    }
+
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void OpenSettings()

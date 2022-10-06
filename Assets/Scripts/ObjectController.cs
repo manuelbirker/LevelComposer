@@ -76,6 +76,7 @@ public class ObjectController : MonoBehaviour
                 {
                     this.gameObject.GetComponent<Collider>().enabled = false;
                     this.gameObject.GetComponent<Renderer>().enabled = false;
+                    GameManager.Instance.score += 100;
                 }
             }
         }
