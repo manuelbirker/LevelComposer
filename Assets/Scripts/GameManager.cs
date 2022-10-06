@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     public GameObject goal;
 
     public CinemachineVirtualCamera vcam;
+    public CinemachineVirtualCamera vcam_game;
     public GameObject editorMover;
 
     private void Awake()
@@ -113,6 +114,11 @@ public class GameManager : MonoBehaviour
 
 
         vcam.Follow = _player.transform;
+        vcam_game.Follow = _player.transform;
+        vcam.enabled = false;
+        vcam_game.enabled = true;
+
+
         _gameState = GameState.PlayTest;
         bpmController.Reset();
         playTestButton.SetActive(false);
@@ -141,6 +147,11 @@ public class GameManager : MonoBehaviour
 
         // editorUI.SetActive(true);
         vcam.Follow = editorMover.transform;
+        vcam_game.Follow = editorMover.transform;
+        vcam.enabled = true;
+        vcam_game.enabled = false;
+
+
         _gameState = GameState.Editor;
         bpmController.Reset();
         playTestButton.SetActive(true);
