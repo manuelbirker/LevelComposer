@@ -71,6 +71,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
     public GameObject editorObjects;
 
+    public GameObject deadZones;
+
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -119,7 +122,7 @@ public class GameManager : MonoBehaviour
         vcam_game.Follow = _player.transform;
         vcam.enabled = false;
         vcam_game.enabled = true;
-
+        deadZones.SetActive(false);
 
         _gameState = GameState.PlayTest;
         bpmController.Reset();
@@ -134,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = "Score: "+score.ToString();
+        scoreText.text = "Score: " + score.ToString();
     }
 
     public void PlayMode()
@@ -206,7 +209,7 @@ public class GameManager : MonoBehaviour
         stopPlayTestButton.SetActive(false);
         bpmController.Reset();
         ambController.Stop();
-
+        deadZones.SetActive(true);
         Destroy(_player);
 
 
