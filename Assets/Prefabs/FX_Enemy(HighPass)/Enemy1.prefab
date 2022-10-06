@@ -504,10 +504,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd04e3d3bf3ed4478a658e93f876102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundariesMinX: 5
-  boundariesMaxX: 5
-  direction: -1
   movingSpeed: 1
+  _movingSpeed: 0
+  startPos: {x: 0, y: 0, z: 0}
+  oC: {fileID: 0}
+  activated: 0
+  killed: 0
+  skin: {fileID: 1023402705930348}
 --- !u!54 &-1992930030159628836
 Rigidbody:
   m_ObjectHideFlags: 0

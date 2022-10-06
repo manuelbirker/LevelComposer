@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 7506161841310846230}
   - component: {fileID: 6954362546777607001}
   m_Layer: 0
-  m_Name: Enemy1
+  m_Name: Enemy2
   m_TagString: Saveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -838,10 +838,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd04e3d3bf3ed4478a658e93f876102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundariesMinX: 5
-  boundariesMaxX: 5
-  direction: -1
   movingSpeed: 1
+  _movingSpeed: 0
+  startPos: {x: 0, y: 0, z: 0}
+  oC: {fileID: 0}
+  activated: 0
+  killed: 0
+  skin: {fileID: 1395925001999234}
 --- !u!1 &1598480406974238
 GameObject:
   m_ObjectHideFlags: 0

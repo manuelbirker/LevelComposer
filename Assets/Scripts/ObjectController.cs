@@ -69,7 +69,6 @@ public class ObjectController : MonoBehaviour
                 GetComponent<AudioSource>().clip = playOnTouch;
                 GetComponent<AudioSource>().Play();
 
-                Debug.Log("Play Sound (Touch)");
 
 
                 if (this.gameObject.name == "Coin")

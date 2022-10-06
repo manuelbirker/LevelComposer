@@ -7,15 +7,15 @@ using Object = UnityEngine.Object;
 
 public class EnemyController : MonoBehaviour
 {
-    public float boundariesMinX = 5.0f;
-    public float boundariesMaxX = 5.0f;
-    public int direction = -1;
     public float movingSpeed = 1f;
 
     public float _movingSpeed;
     public Vector3 startPos;
     public ObjectController oC;
     public bool activated = false;
+    public bool killed = false;
+    public GameObject skin;
+
 
     private void Awake()
     {
@@ -27,12 +27,13 @@ public class EnemyController : MonoBehaviour
     {
         if (!activated)
         {
-            if (oC.isHeld)
+            if (!oC.isHeld)
             {
                 startPos = transform.position;
-                activated = true;
                 _movingSpeed = movingSpeed;
             }
+
+            activated = true;
         }
 
 
@@ -40,58 +41,39 @@ public class EnemyController : MonoBehaviour
             GameManager.Instance._gameState != GameManager.GameState.PlayTest)
         {
             GetComponent<Rigidbody>().isKinematic = true;
-
-            return;
         }
-
-        GetComponent<Rigidbody>().isKinematic = false;
-
-        switch (direction)
+        else
         {
-            case -1:
-                // Moving Left
-                if (transform.position.x > boundariesMinX)
-                {
-                    GetComponent<Rigidbody>().velocity =
-                        new Vector2(-movingSpeed, GetComponent<Rigidbody>().velocity.y);
-                }
-                else
-                {
-                    direction = 1;
-                }
-
-                break;
-            case 1:
-                //Moving Right
-                if (transform.position.x < boundariesMaxX)
-                {
-                    GetComponent<Rigidbody>().velocity =
-                        new Vector2(movingSpeed, GetComponent<Rigidbody>().velocity.y);
-                }
-                else
-                {
-                    direction = -1;
-                }
-
-                break;
+            if (killed)
+            {
+                GetComponent<Rigidbody>().isKinematic = true;
+            }
+            else
+            {
+                GetComponent<Rigidbody>().isKinematic = false;
+            }
         }
+
+
+        // TODO Enemy Movement
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Enemy Col");
             if (!collision.transform.GetComponent<PlayerController>().isGrounded)
             {
-                if (collision.gameObject.name.Remove(collision.gameObject.name.Length - 1) == "Enemy")
+                if (gameObject.name.Remove(gameObject.name.Length - 1) == "Enemy")
                 {
                     Debug.Log("Enemy Kill");
                     this.gameObject.GetComponent<Collider>().enabled = false;
-                    this.gameObject.GetComponent<Renderer>().enabled = false;
                     GameManager.Instance.score += 500;
                     movingSpeed = 0;
                     transform.position = startPos;
+                    GetComponent<Rigidbody>().isKinematic = true;
+                    killed = true;
+                    GetComponent<EnemyController>().skin.SetActive(false);
                 }
             }
             else

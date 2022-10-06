@@ -221,12 +221,45 @@ public class GameManager : MonoBehaviour
                 gameObj.gameObject.GetComponent<Renderer>().enabled = true;
             }
 
-            if (gameObj.name == "Enemy")
+            if (gameObj.gameObject.name.Remove(gameObj.gameObject.name.Length - 1) == "Enemy")
+            {
+                gameObj.gameObject.GetComponent<EnemyController>().skin.SetActive(true);
+                gameObj.gameObject.GetComponent<Collider>().enabled = true;
+                gameObj.gameObject.GetComponent<EnemyController>().movingSpeed =
+                    gameObj.gameObject.GetComponent<EnemyController>()._movingSpeed;
+                gameObj.gameObject.GetComponent<EnemyController>().killed = false;
+                gameObj.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                gameObj.gameObject.transform.position = gameObj.gameObject.GetComponent<EnemyController>().startPos;
+            }
+        }
+    }
+
+    public void ResetLevel()
+    {
+        bpmController.Reset();
+        playTestButton.SetActive(true);
+        stopPlayTestButton.SetActive(false);
+        bpmController.Reset();
+        ambController.Stop();
+        deadZones.SetActive(true);
+        Destroy(_player);
+
+
+        foreach (GameObject gameObj in GameObject.FindObjectsOfType<GameObject>())
+        {
+            if (gameObj.name == "Coin")
             {
                 gameObj.gameObject.GetComponent<Collider>().enabled = true;
                 gameObj.gameObject.GetComponent<Renderer>().enabled = true;
+            }
+
+            if (gameObj.gameObject.name.Remove(gameObj.gameObject.name.Length - 1) == "Enemy")
+            {
+                gameObj.gameObject.SetActive(true);
+                gameObj.gameObject.GetComponent<Collider>().enabled = true;
                 gameObj.gameObject.GetComponent<EnemyController>().movingSpeed =
                     gameObj.gameObject.GetComponent<EnemyController>()._movingSpeed;
+                gameObj.gameObject.GetComponent<EnemyController>().killed = false;
                 gameObj.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 gameObj.gameObject.transform.position = gameObj.gameObject.GetComponent<EnemyController>().startPos;
             }

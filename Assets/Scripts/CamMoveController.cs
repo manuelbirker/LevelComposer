@@ -31,6 +31,12 @@ public class CamMoveController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance._gameState != GameManager.GameState.Editor)
+        {
+            return;
+        }
+
+
         Vector3 input = new Vector3(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed, 0);
 
         if (transform.position.x < minX)

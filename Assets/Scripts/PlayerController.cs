@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         IsGrounded();
         MovePlayer();
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        _playerRigidbody.AddForce(new Vector3(0, jumpPower, 0));
+        _playerRigidbody.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
     }
 
     private void IsGrounded()

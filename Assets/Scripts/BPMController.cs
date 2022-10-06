@@ -62,7 +62,6 @@ public class BPMController : MonoBehaviour
         {
             transform.gameObject.GetComponent<AudioSource>().clip = tickerSound;
             transform.gameObject.GetComponent<AudioSource>().Play();
-            Debug.Log("Play Sound (Ticker)");
         }
     }
 
@@ -138,7 +137,6 @@ public class BPMController : MonoBehaviour
             AudioClip playOnTick = col.transform.gameObject.GetComponent<ObjectController>().playOnTick;
             col.transform.gameObject.GetComponent<AudioSource>().clip = playOnTick; 
             col.transform.gameObject.GetComponent<AudioSource>().Play();
-            Debug.Log("Play Sound (On Tick)");
         }
     }
 }
