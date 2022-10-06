@@ -70,6 +70,12 @@ public class EnemyController : MonoBehaviour
 
             distance = Vector3.Distance(transform.position, player.position);
 
+
+            if (killed)
+            {
+                return;
+            }
+
             if (distance < distanceActive)
             {
                 effectActive = true;
