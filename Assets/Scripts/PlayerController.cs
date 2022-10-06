@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip deathSound;
     public AudioSource aS;
-
+    public bool canJump = true;
 
     public GroundCheck groundCheck;
 
@@ -39,6 +39,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+            if (!canJump)
+            {
+                return;
+            }
+
             Jump();
         }
     }
@@ -65,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
 
         _playerRigidbody.velocity =
-            new Vector2(horizontalInput * playerSpeed , _playerRigidbody.velocity.y);
+            new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
 
 
         anim.SetFloat("speed", _playerRigidbody.velocity.x);
@@ -90,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        _playerRigidbody.AddForce(new Vector3(0, jumpPower , 0), ForceMode.Impulse);
+        _playerRigidbody.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
     }
 
     private void IsGrounded()
@@ -124,6 +129,43 @@ public class PlayerController : MonoBehaviour
             aS.clip = deathSound;
             aS.Play();
         }
+
+        if (collision.gameObject.name == "TrampolineUp")
+        {
+            if (!isGrounded)
+            {
+                return;
+            }
+
+            canJump = false;
+            _playerRigidbody.AddForce(new Vector3(playerSpeed * direction * 3.25f, jumpPower * 3f, 0),
+                ForceMode.Impulse);
+
+            _playerRigidbody.velocity =
+                new Vector2(direction * playerSpeed, _playerRigidbody.velocity.y);
+        }
+        else
+        {
+            canJump = true;
+        }
+
+        if (collision.gameObject.name == "TrampolineDown")
+        {
+            if (!isGrounded)
+            {
+                return;
+            }
+
+            canJump = false;
+            _playerRigidbody.AddForce(new Vector3(playerSpeed * direction * 3.25f, -jumpPower * 3f, 0),
+                ForceMode.Impulse);
+            _playerRigidbody.velocity =
+                new Vector2(direction * playerSpeed, _playerRigidbody.velocity.y);
+        }
+        else
+        {
+            canJump = true;
+        }
     }
 
     private void OnTriggerStay(Collider collision)
@@ -133,6 +175,43 @@ public class PlayerController : MonoBehaviour
             this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
             aS.clip = deathSound;
             aS.Play();
+        }
+        
+        if (collision.gameObject.name == "TrampolineUp")
+        {
+            if (!isGrounded)
+            {
+                return;
+            }
+
+            canJump = false;
+            _playerRigidbody.AddForce(new Vector3(playerSpeed * direction * 3.25f, jumpPower * 3f, 0),
+                ForceMode.Impulse);
+
+            _playerRigidbody.velocity =
+                new Vector2(direction * playerSpeed, _playerRigidbody.velocity.y);
+        }
+        else
+        {
+            canJump = true;
+        }
+
+        if (collision.gameObject.name == "TrampolineDown")
+        {
+            if (!isGrounded)
+            {
+                return;
+            }
+
+            canJump = false;
+            _playerRigidbody.AddForce(new Vector3(playerSpeed * direction * 3.25f, -jumpPower * 3f, 0),
+                ForceMode.Impulse);
+            _playerRigidbody.velocity =
+                new Vector2(direction * playerSpeed, _playerRigidbody.velocity.y);
+        }
+        else
+        {
+            canJump = true;
         }
     }
 

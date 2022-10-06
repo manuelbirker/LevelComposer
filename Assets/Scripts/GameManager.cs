@@ -256,7 +256,7 @@ public class GameManager : MonoBehaviour
 
             if (gameObj.gameObject.name.Remove(gameObj.gameObject.name.Length - 1) == "Enemy")
             {
-                gameObj.gameObject.SetActive(true);
+                gameObj.gameObject.GetComponent<EnemyController>().skin.SetActive(true);
                 gameObj.gameObject.GetComponent<Collider>().enabled = true;
                 gameObj.gameObject.GetComponent<EnemyController>().movingSpeed =
                     gameObj.gameObject.GetComponent<EnemyController>()._movingSpeed;
@@ -272,7 +272,7 @@ public class GameManager : MonoBehaviour
     {
         if (_gameState == GameState.Editor)
         {
-            levelName = "NewLevel_" + Random.Range(0, 9999);
+            levelName = "NewLevel_" + Random.Range(0, 99999);
             levelNameInput.text = levelName;
         }
 
