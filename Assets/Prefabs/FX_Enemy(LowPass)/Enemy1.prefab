@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 7506161841310846230}
   - component: {fileID: 6954362546777607001}
   m_Layer: 0
-  m_Name: micro_ghost
+  m_Name: Enemy1
   m_TagString: Saveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,7 +795,7 @@ MonoBehaviour:
   isHeld: 0
   canWobble: 1
   playOnTick: {fileID: 0}
-  playOnTouch: {fileID: 0}
+  playOnTouch: {fileID: 8300000, guid: e0c8e125f8b763444bf2a0f85a09f1d6, type: 3}
   toolTip: LowPass Filter
 --- !u!135 &3969310872783844662
 SphereCollider:

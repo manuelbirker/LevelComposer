@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: -1992930030159628836}
   - component: {fileID: 8131543717635104913}
   m_Layer: 0
-  m_Name: micro_skeleton
+  m_Name: Enemy1
   m_TagString: Saveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -394,7 +394,7 @@ MonoBehaviour:
   isHeld: 0
   canWobble: 1
   playOnTick: {fileID: 0}
-  playOnTouch: {fileID: 0}
+  playOnTouch: {fileID: 8300000, guid: e0c8e125f8b763444bf2a0f85a09f1d6, type: 3}
   toolTip: HiPass Filter
 --- !u!82 &7946009076037252768
 AudioSource:

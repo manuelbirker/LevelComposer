@@ -220,6 +220,16 @@ public class GameManager : MonoBehaviour
                 gameObj.gameObject.GetComponent<Collider>().enabled = true;
                 gameObj.gameObject.GetComponent<Renderer>().enabled = true;
             }
+
+            if (gameObj.name == "Enemy")
+            {
+                gameObj.gameObject.GetComponent<Collider>().enabled = true;
+                gameObj.gameObject.GetComponent<Renderer>().enabled = true;
+                gameObj.gameObject.GetComponent<EnemyController>().movingSpeed =
+                    gameObj.gameObject.GetComponent<EnemyController>()._movingSpeed;
+                gameObj.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                gameObj.gameObject.transform.position = gameObj.gameObject.GetComponent<EnemyController>().startPos;
+            }
         }
     }
 

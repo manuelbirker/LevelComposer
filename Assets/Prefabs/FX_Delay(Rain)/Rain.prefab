@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6341269155049798430}
   - component: {fileID: -7889545296566845252}
   m_Layer: 0
-  m_Name: RainHard2
+  m_Name: Rain
   m_TagString: Saveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

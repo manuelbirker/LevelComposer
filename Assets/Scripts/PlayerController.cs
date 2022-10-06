@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         IsGrounded();
         MovePlayer();
 
-        if (Input.GetButton("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
         }
@@ -104,6 +104,10 @@ public class PlayerController : MonoBehaviour
         }  **/
     }
 
+    public void ReSpawn()
+    {
+        this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
