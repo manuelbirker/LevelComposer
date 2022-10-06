@@ -95,11 +95,6 @@ public class GameManager : MonoBehaviour
         goal = GameObject.Find("Goal");
 
 
-        if (goal != null)
-        {
-            goal.SetActive(false);
-        }
-
         if (start != null)
         {
             start.SetActive(false);
@@ -123,6 +118,43 @@ public class GameManager : MonoBehaviour
         bpmController.Reset();
         playTestButton.SetActive(false);
         stopPlayTestButton.SetActive(true);
+
+        if (ambianceID != 0)
+        {
+            ambController.Play();
+        }
+    }
+
+    public void PlayMode()
+    {
+        editorUI.SetActive(false);
+        settingsUI.SetActive(false);
+        start = GameObject.Find("Start");
+        goal = GameObject.Find("Goal");
+
+
+        if (start != null)
+        {
+            start.SetActive(false);
+        }
+
+
+        _player = Instantiate(playerPrefab);
+        _player.transform.position = start.transform.position;
+
+
+        _player.transform.rotation = Quaternion.Euler(0, 90, 0);
+
+
+        vcam.Follow = _player.transform;
+        vcam_game.Follow = _player.transform;
+        vcam.enabled = false;
+        vcam_game.enabled = true;
+
+
+        _gameState = GameState.PlayLevel;
+        bpmController.Reset();
+
 
         if (ambianceID != 0)
         {
@@ -181,8 +213,19 @@ public class GameManager : MonoBehaviour
             levelNameInput.text = levelName;
         }
 
+
         bpmController.levelLength = levelLength;
         bpmController.Reset();
+
+
+        if (_gameState == GameState.PlayLevel)
+        {
+            PlayMode();
+        }
+
+        if (_gameState == GameState.Editor)
+        {
+        }
     }
 
     public void OpenSettings()
