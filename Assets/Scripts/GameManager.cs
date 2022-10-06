@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
 
 
         _player = Instantiate(playerPrefab);
+        _player.name = "Player";
         _player.transform.position = start.transform.position;
 
 

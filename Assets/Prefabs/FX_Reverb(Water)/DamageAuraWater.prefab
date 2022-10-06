@@ -4905,7 +4905,6 @@ GameObject:
   - component: {fileID: 5759086014325735106}
   - component: {fileID: 7172076072789319597}
   - component: {fileID: 4026016017549130826}
-  - component: {fileID: 5463224443069695406}
   m_Layer: 0
   m_Name: DamageAuraWater
   m_TagString: Saveable
@@ -9932,27 +9931,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.141994, y: 2.9855998, z: 0.4629809}
   m_Center: {x: -0.000000059604645, y: -0.0045224437, z: 0.20965073}
---- !u!167 &5463224443069695406
-AudioReverbZone:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7392702865118003069}
-  m_Enabled: 1
-  m_MinDistance: 10
-  m_MaxDistance: 15
-  m_ReverbPreset: 1
-  m_Room: -1000
-  m_RoomHF: -100
-  m_DecayTime: 1.49
-  m_DecayHFRatio: 0.83
-  m_Reflections: -2602
-  m_ReflectionsDelay: 0.007
-  m_Reverb: 200
-  m_ReverbDelay: 0.011
-  m_HFReference: 5000
-  m_Diffusion: 100
-  m_Density: 100
-  m_LFReference: 250
-  m_RoomLF: 0

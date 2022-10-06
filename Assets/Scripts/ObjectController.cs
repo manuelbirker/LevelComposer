@@ -70,7 +70,6 @@ public class ObjectController : MonoBehaviour
                 GetComponent<AudioSource>().Play();
 
 
-
                 if (this.gameObject.name == "Coin")
                 {
                     this.gameObject.GetComponent<Collider>().enabled = false;
@@ -81,6 +80,23 @@ public class ObjectController : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (this.gameObject.name == "Rain")
+        {
+            Camera.main.GetComponent<AudioEchoFilter>().enabled = true;
+        }
+
+        if (this.gameObject.name == "Water")
+        {
+            Camera.main.GetComponent<AudioReverbFilter>().enabled = true;
+        }
+    }
 
 
+    private void OnTriggerExit(Collider other)
+    {
+        Camera.main.GetComponent<AudioEchoFilter>().enabled = false;
+        Camera.main.GetComponent<AudioReverbFilter>().enabled = false;
+    }
 }

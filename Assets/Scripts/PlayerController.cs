@@ -35,13 +35,19 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         IsGrounded();
-        MovePlayer();
+
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
     }
+
+    private void FixedUpdate()
+    {
+        MovePlayer();
+    }
+
 
     private void MovePlayer()
     {
@@ -58,7 +64,8 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        _playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
+        _playerRigidbody.velocity =
+            new Vector2(horizontalInput * playerSpeed , _playerRigidbody.velocity.y);
 
 
         anim.SetFloat("speed", _playerRigidbody.velocity.x);
@@ -83,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        _playerRigidbody.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
+        _playerRigidbody.AddForce(new Vector3(0, jumpPower , 0), ForceMode.Impulse);
     }
 
     private void IsGrounded()

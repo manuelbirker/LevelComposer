@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using Object = UnityEngine.Object;
 
 public class EnemyController : MonoBehaviour
@@ -16,6 +18,13 @@ public class EnemyController : MonoBehaviour
     public bool killed = false;
     public GameObject skin;
 
+    public float distance;
+    public float distanceActive;
+    public Transform player;
+    public bool effectActive;
+
+
+    public AudioMixer mixer;
 
     private void Awake()
     {
@@ -54,9 +63,50 @@ public class EnemyController : MonoBehaviour
             }
         }
 
+        if (GameManager.Instance._player)
+        {
+            player = GameObject.Find("Player").transform;
+
+
+            distance = Vector3.Distance(transform.position, player.position);
+
+            if (distance < distanceActive)
+            {
+                effectActive = true;
+            }
+            else
+            {
+                effectActive = false;
+            }
+        }
+
+        if (this.gameObject.name == "Enemy1")
+        {
+            if (effectActive)
+            {
+                Camera.main.GetComponent<AudioHighPassFilter>().enabled = true;
+            }
+            else
+            {
+                Camera.main.GetComponent<AudioHighPassFilter>().enabled = false;
+            }
+        }
+
+        if (this.gameObject.name == "Enemy2")
+        {
+            if (effectActive)
+            {
+                Camera.main.GetComponent<AudioLowPassFilter>().enabled = true;
+            }
+            else
+            {
+                Camera.main.GetComponent<AudioLowPassFilter>().enabled = false;
+            }
+        }
 
         // TODO Enemy Movement
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
