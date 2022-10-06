@@ -96,7 +96,15 @@ public class ObjectController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Camera.main.GetComponent<AudioEchoFilter>().enabled = false;
-        Camera.main.GetComponent<AudioReverbFilter>().enabled = false;
+        if (this.gameObject.name == "Rain")
+        {
+            Camera.main.GetComponent<AudioEchoFilter>().enabled = false;
+        }
+
+
+        if (this.gameObject.name == "Water")
+        {
+            Camera.main.GetComponent<AudioReverbFilter>().enabled = false;
+        }
     }
 }

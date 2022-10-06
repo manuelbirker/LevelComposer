@@ -4906,7 +4906,7 @@ GameObject:
   - component: {fileID: 7172076072789319597}
   - component: {fileID: 4026016017549130826}
   m_Layer: 0
-  m_Name: DamageAuraWater
+  m_Name: Water
   m_TagString: Saveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

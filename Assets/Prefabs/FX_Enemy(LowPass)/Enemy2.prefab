@@ -845,11 +845,11 @@ MonoBehaviour:
   activated: 0
   killed: 0
   skin: {fileID: 1395925001999234}
-  rb: {fileID: 0}
-  dir: 0
-  moveSpeed: 1
-  facingRight: 0
-  localScale: {x: 0, y: 0, z: 0}
+  distance: 0
+  distanceActive: 10
+  player: {fileID: 0}
+  effectActive: 0
+  mixer: {fileID: 0}
 --- !u!1 &1598480406974238
 GameObject:
   m_ObjectHideFlags: 0
