@@ -4952,4 +4952,4 @@ MonoBehaviour:
   canWobble: 0
   playOnTick: {fileID: 0}
   playOnTouch: {fileID: 8300000, guid: ab2f97475982b784785a92e271423605, type: 3}
-  toolTip: 
+  toolTip: Coin

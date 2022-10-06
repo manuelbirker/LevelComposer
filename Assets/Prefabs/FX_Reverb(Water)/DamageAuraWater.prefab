@@ -9918,6 +9918,7 @@ MonoBehaviour:
   canWobble: 1
   playOnTick: {fileID: 0}
   playOnTouch: {fileID: 0}
+  toolTip: Reverb
 --- !u!65 &4026016017549130826
 BoxCollider:
   m_ObjectHideFlags: 0

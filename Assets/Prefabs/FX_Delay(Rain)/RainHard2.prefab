@@ -4938,6 +4938,7 @@ MonoBehaviour:
   canWobble: 1
   playOnTick: {fileID: 0}
   playOnTouch: {fileID: 0}
+  toolTip: Delay
 --- !u!82 &-7889545296566845252
 AudioSource:
   m_ObjectHideFlags: 0

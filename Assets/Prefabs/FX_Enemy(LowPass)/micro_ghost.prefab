@@ -796,7 +796,7 @@ MonoBehaviour:
   canWobble: 1
   playOnTick: {fileID: 0}
   playOnTouch: {fileID: 0}
-  toolTip: 
+  toolTip: LowPass Filter
 --- !u!135 &3969310872783844662
 SphereCollider:
   m_ObjectHideFlags: 0

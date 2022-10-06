@@ -6555,6 +6555,7 @@ MonoBehaviour:
   canWobble: 1
   playOnTick: {fileID: 0}
   playOnTouch: {fileID: 0}
+  toolTip: Level Goal
 --- !u!82 &2426653288712878233
 AudioSource:
   m_ObjectHideFlags: 0

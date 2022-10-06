@@ -116,6 +116,7 @@ MonoBehaviour:
   canWobble: 1
   playOnTick: {fileID: 8300000, guid: ab2f97475982b784785a92e271423605, type: 3}
   playOnTouch: {fileID: 0}
+  toolTip: Snare
 --- !u!82 &3612228816464464162
 AudioSource:
   m_ObjectHideFlags: 0

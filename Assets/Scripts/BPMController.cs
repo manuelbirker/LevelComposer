@@ -76,7 +76,7 @@ public class BPMController : MonoBehaviour
         endValue =
             new Vector3(transform.position.x + beatSize, transform.position.y, 0);
 
-        levelEndMarker.transform.position = new Vector3(levelLength, 0, 0);
+        levelEndMarker.transform.position = new Vector3(levelLength+0.5f, 0, 0);
     }
 
 

@@ -256,6 +256,7 @@ MonoBehaviour:
   canWobble: 1
   playOnTick: {fileID: 8300000, guid: 1762af6165bd97e4db4fbf6e6fda7c0b, type: 3}
   playOnTouch: {fileID: 0}
+  toolTip: Crash
 --- !u!82 &7458100352547849963
 AudioSource:
   m_ObjectHideFlags: 0

@@ -395,7 +395,7 @@ MonoBehaviour:
   canWobble: 1
   playOnTick: {fileID: 0}
   playOnTouch: {fileID: 0}
-  toolTip: 
+  toolTip: HiPass Filter
 --- !u!82 &7946009076037252768
 AudioSource:
   m_ObjectHideFlags: 0

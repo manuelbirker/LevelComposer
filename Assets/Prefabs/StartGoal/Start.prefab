@@ -671,7 +671,7 @@ MonoBehaviour:
   canWobble: 0
   playOnTick: {fileID: 0}
   playOnTouch: {fileID: 0}
-  toolTip: 
+  toolTip: Level Start
 --- !u!82 &3908691008708929283
 AudioSource:
   m_ObjectHideFlags: 0
