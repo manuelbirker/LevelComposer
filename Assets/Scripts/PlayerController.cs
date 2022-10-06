@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip deathSound;
     public AudioSource aS;
 
+
+    public GroundCheck groundCheck;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -44,36 +47,37 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
+
+        if (horizontalInput > 0)
+        {
+            direction = 1;
+        }
+        else if (horizontalInput < 0)
+        {
+            direction = -1;
+        }
+
+
         _playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
 
 
         anim.SetFloat("speed", _playerRigidbody.velocity.x);
 
 
-        if (_playerRigidbody.velocity.x > 0)
-        {
-            direction = 1;
-        }
-        else
-        {
-            direction = -1;
-        }
-
-
-        transform.rotation = Quaternion.LookRotation(new Vector3(_playerRigidbody.velocity.x, 0, 0));
-
-
-        if (_playerRigidbody.velocity.x == 0)
+        if (horizontalInput == 0)
         {
             if (direction == 1)
             {
                 transform.rotation = Quaternion.LookRotation(new Vector3(90, 0, 0));
             }
-
-            if (direction == -1)
+            else
             {
                 transform.rotation = Quaternion.LookRotation(new Vector3(-90, 0, 0));
             }
+        }
+        else
+        {
+            transform.rotation = Quaternion.LookRotation(new Vector3(_playerRigidbody.velocity.x, 0, 0));
         }
     }
 
@@ -84,6 +88,10 @@ public class PlayerController : MonoBehaviour
 
     private void IsGrounded()
     {
+        isGrounded = groundCheck.isGrounded;
+
+
+        /**
         var groundCheck = Physics.Raycast(transform.position, Vector2.down, groundCast);
 
         if (groundCheck)
@@ -93,7 +101,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             isGrounded = false;
-        }
+        }  **/
     }
 
 
