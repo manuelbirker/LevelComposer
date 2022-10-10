@@ -73,6 +73,25 @@ public class GameManager : MonoBehaviour
 
     public GameObject deadZones;
 
+    public void ClearLevel()
+    {
+        GameObject[] assetsToSave = GameObject.FindGameObjectsWithTag("Saveable");
+
+        if (assetsToSave != null)
+        {
+            for (int i = 0; i < assetsToSave.Length; i++)
+            {
+                Destroy(assetsToSave[i]);
+            }
+        }
+
+
+        levelLength = 16;
+        ambianceID = 0;
+        levelName = "NewLevel_" + Random.Range(0, 99999);
+
+        ResetLevel();
+    }
 
     private void Awake()
     {

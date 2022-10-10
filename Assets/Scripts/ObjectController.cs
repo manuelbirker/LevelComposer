@@ -36,6 +36,17 @@ public class ObjectController : MonoBehaviour
         }
 
 
+
+
+        if (isHeld)
+        {
+            transform.gameObject.tag = "notSaveable";
+        }
+        else
+        {
+            transform.gameObject.tag = "Saveable"; 
+        }
+
         if (!GetComponent<AudioSource>().isPlaying)
         {
             CancelInvoke("WobbleTarget");

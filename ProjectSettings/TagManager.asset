@@ -8,6 +8,7 @@ TagManager:
   - Deadzone
   - Ticker
   - Death
+  - notSaveable
   layers:
   - Default
   - TransparentFX

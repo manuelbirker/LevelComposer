@@ -28,17 +28,21 @@ public class LevelManager : MonoBehaviour
 
     public void FindSaveableAssets()
     {
+        /**
         if (assetsToSave != null)
         {
             for (int i = 0; i < assetsToSave.Length; i++)
             {
                 Destroy(assetsToSave[i]);
             }
-        }
+        }**/
 
+
+        Array.Clear(assetsToSave, 0, assetsToSave.Length);
+        Array.Clear(assetNames, 0, assetNames.Length);
+        Array.Clear(assetPositions, 0, assetPositions.Length);
 
         assetsToSave = GameObject.FindGameObjectsWithTag(saveableAssetTag);
-
         assetNames = new string[assetsToSave.Length];
         assetPositions = new Vector3[assetsToSave.Length];
 
@@ -50,6 +54,9 @@ public class LevelManager : MonoBehaviour
 
         SaveToFile();
     }
+
+
+
 
 
     public void SaveToFile()
@@ -95,12 +102,10 @@ public class LevelManager : MonoBehaviour
 
         string filePath = "Assets/Levels/" + loadLevelName + ".txt";
 
-  
+
         StreamReader reader = new StreamReader(filePath);
-        
-        
-        
-        
+
+
         int numOfLine = 0;
 
         while (reader.ReadLine() != null)
@@ -151,6 +156,7 @@ public class LevelManager : MonoBehaviour
         }
 
         reader.Close();
+        reader2.Close();
 
         CreateAssets();
     }

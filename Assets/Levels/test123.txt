@@ -1,0 +1,19 @@
+levelName:#/#test123
+levelLength:#/#15
+ambiance:#/#1
+object:#/#Floor6#/#3,054886#/#1,848061#/#0
+object:#/#Floor6#/#6,337036#/#1,867256#/#0
+object:#/#Floor6#/#6,394608#/#4,899887#/#0
+object:#/#Floor6#/#8,851425#/#1,828873#/#0
+object:#/#Floor6#/#8,889816#/#4,899887#/#0
+object:#/#TrampolineUp#/#5,895569#/#2,231941#/#0
+object:#/#TrampolineUp#/#7,354309#/#2,212746#/#0
+object:#/#TrampolineUp#/#8,851425#/#2,212746#/#0
+object:#/#TrampolineDown#/#5,876373#/#4,554398#/#0
+object:#/#TrampolineDown#/#7,41188#/#4,554398#/#0
+object:#/#TrampolineDown#/#8,889816#/#4,535202#/#0
+object:#/#SM_Tree_01 1#/#1,980026#/#1,944031#/#0
+object:#/#SM_Tree_01 1#/#6,528976#/#2,040001#/#0
+object:#/#SM_Tree_01 1#/#9,312073#/#1,905647#/#0
+object:#/#Enemy2#/#0#/#0#/#0
+object:#/#Start#/#3,074081#/#2,017647#/#0
