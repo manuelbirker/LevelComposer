@@ -136,6 +136,7 @@ public class EnemyController : MonoBehaviour
             {
                 Debug.Log("Death by enemy");
                 collision.transform.GetComponent<PlayerController>().ReSpawn();
+                collision.transform.GetComponent<PlayerController>().SubLife();
             }
         }
     }

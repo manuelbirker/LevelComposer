@@ -69,11 +69,16 @@ public class GameManager : MonoBehaviour
     public GameObject ingameUI;
     public int score = 0;
     public TMP_Text scoreText;
+    public TMP_Text win_scoreText;
     public GameObject editorObjects;
 
     public GameObject deadZones;
 
     public LevelManager lm;
+
+
+    public GameObject winUI;
+    public GameObject loseUI;
 
     public void ClearLevel()
     {
@@ -101,6 +106,29 @@ public class GameManager : MonoBehaviour
 
         lm.ResetLevel();
     }
+
+
+    public void PlayerWins()
+    {
+        winUI.SetActive(true);
+
+        editorUI.SetActive(false);
+        ingameUI.SetActive(false);
+
+        settingsUI.SetActive(false);
+    }
+
+    public void PlayerLoses()
+    {
+        loseUI.SetActive(true);
+
+
+        editorUI.SetActive(false);
+        ingameUI.SetActive(false);
+
+        settingsUI.SetActive(false);
+    }
+
 
     private void Awake()
     {
@@ -167,6 +195,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         scoreText.text = "Score: " + score.ToString();
+        win_scoreText.text = "Score: " + score.ToString();
     }
 
     public void PlayMode()
@@ -323,6 +352,9 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
+        ClearLevel();
+
+
         SceneManager.LoadScene("MainMenu");
     }
 

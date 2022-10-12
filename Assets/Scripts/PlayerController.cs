@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public Animator anim;
 
+    public int life = 3;
 
     public AudioClip deathSound;
     public AudioSource aS;
@@ -168,6 +169,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    public void SubLife()
+    {
+        if (life >= 0)
+        {
+            this.transform.GetComponent<Rigidbody>().isKinematic = true;
+            GameManager.Instance.PlayerLoses();
+        }
+
+        life -= 1;
+    }
+
     private void OnTriggerStay(Collider collision)
     {
         if (collision.transform.gameObject.CompareTag("Death"))
@@ -176,7 +189,7 @@ public class PlayerController : MonoBehaviour
             aS.clip = deathSound;
             aS.Play();
         }
-        
+
         if (collision.gameObject.name == "TrampolineUp")
         {
             if (!isGrounded)
@@ -222,6 +235,14 @@ public class PlayerController : MonoBehaviour
             this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
             aS.clip = deathSound;
             aS.Play();
+            SubLife();
+        }
+
+
+        if (collision.transform.gameObject.name == "Goal")
+        {
+            GameManager.Instance.PlayerWins();
+            this.transform.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 
