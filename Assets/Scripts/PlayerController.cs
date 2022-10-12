@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -172,6 +173,12 @@ public class PlayerController : MonoBehaviour
 
     public void SubLife()
     {
+        if (GameManager.Instance._gameState == GameManager.GameState.Editor)
+        {
+            return;
+        }
+
+
         if (life >= 0)
         {
             this.transform.GetComponent<Rigidbody>().isKinematic = true;
@@ -241,6 +248,11 @@ public class PlayerController : MonoBehaviour
 
         if (collision.transform.gameObject.name == "Goal")
         {
+            if (GameManager.Instance._gameState == GameManager.GameState.Editor)
+            {
+                GameManager.Instance.StopPlayTest();
+            }
+
             GameManager.Instance.PlayerWins();
             this.transform.GetComponent<Rigidbody>().isKinematic = true;
         }

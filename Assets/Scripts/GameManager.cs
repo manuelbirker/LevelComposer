@@ -200,6 +200,11 @@ public class GameManager : MonoBehaviour
 
     public void PlayMode()
     {
+
+        
+        
+        
+        
         editorUI.SetActive(false);
         settingsUI.SetActive(false);
         start = GameObject.Find("Start");
@@ -332,6 +337,12 @@ public class GameManager : MonoBehaviour
             levelName = "NewLevel_" + Random.Range(0, 99999);
             levelNameInput.text = levelName;
         }
+
+        if (_gameState == GameState.PlayLevel)
+        {
+            PlayMode();
+        }
+
 
         score = 0;
         bpmController.levelLength = levelLength;

@@ -18,6 +18,9 @@ public class ObjectController : MonoBehaviour
 
     public string toolTip = "";
 
+    public float startVolume;
+    public float endVolume;
+
     public void Wobble()
     {
         InvokeRepeating("WobbleTarget", 0, 0.5f);
@@ -26,6 +29,9 @@ public class ObjectController : MonoBehaviour
     private void Start()
     {
         startAngle = this.transform.rotation.eulerAngles;
+
+        startVolume = GetComponent<AudioSource>().volume;
+        endVolume = 0;
     }
 
     private void Update()
@@ -36,15 +42,13 @@ public class ObjectController : MonoBehaviour
         }
 
 
-
-
         if (isHeld)
         {
             transform.gameObject.tag = "notSaveable";
         }
         else
         {
-            transform.gameObject.tag = "Saveable"; 
+            transform.gameObject.tag = "Saveable";
         }
 
         if (!GetComponent<AudioSource>().isPlaying)

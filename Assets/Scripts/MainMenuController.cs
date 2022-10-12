@@ -31,6 +31,7 @@ public class MainMenuController : MonoBehaviour
     public void ChangeSelectedLevel(string lvl)
     {
         selectedLevel = lvl;
+        
     }
 
     public void PlayLevel()
@@ -89,6 +90,7 @@ public class MainMenuController : MonoBehaviour
     public void LoadLevel()
     {
         whichOption = "PlayLevel";
+
         SceneManager.LoadScene("Editor");
     }
 

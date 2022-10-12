@@ -75,7 +75,7 @@ public class BPMController : MonoBehaviour
         endValue =
             new Vector3(transform.position.x + beatSize, transform.position.y, 0);
 
-        levelEndMarker.transform.position = new Vector3(levelLength+0.5f, 0, 0);
+        levelEndMarker.transform.position = new Vector3(levelLength + 0.5f, 0, 0);
     }
 
 
@@ -135,8 +135,13 @@ public class BPMController : MonoBehaviour
         if (col.transform.gameObject.GetComponent<ObjectController>().playOnTick != null)
         {
             AudioClip playOnTick = col.transform.gameObject.GetComponent<ObjectController>().playOnTick;
-            col.transform.gameObject.GetComponent<AudioSource>().clip = playOnTick; 
-            col.transform.gameObject.GetComponent<AudioSource>().Play();
+            col.transform.gameObject.GetComponent<AudioSource>().clip = playOnTick;
+
+            StartCoroutine(AudioFader.Fade(col.transform.GetComponent<AudioSource>(), 0.5f,
+                col.transform.GetComponent<ObjectController>().startVolume));
+
+
+            col.transform.gameObject.GetComponent<AudioSource>().Play(); 
         }
     }
 }
