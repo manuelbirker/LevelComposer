@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Saveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4277523050980900
 Transform:
@@ -116,6 +116,7 @@ MonoBehaviour:
   canWobble: 0
   playOnTick: {fileID: 0}
   playOnTouch: {fileID: 0}
+  toolTip: 
 --- !u!82 &-2707167938745993221
 AudioSource:
   m_ObjectHideFlags: 0
