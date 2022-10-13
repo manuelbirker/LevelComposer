@@ -137,8 +137,7 @@ public class BPMController : MonoBehaviour
             AudioClip playOnTick = col.transform.gameObject.GetComponent<ObjectController>().playOnTick;
             col.transform.gameObject.GetComponent<AudioSource>().clip = playOnTick;
 
-            StartCoroutine(AudioFader.Fade(col.transform.GetComponent<AudioSource>(), 0.5f,
-                col.transform.GetComponent<ObjectController>().startVolume));
+         
 
 
             col.transform.gameObject.GetComponent<AudioSource>().Play(); 
