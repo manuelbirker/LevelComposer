@@ -1,6 +1,0 @@
-levelName:#/#111
-levelLength:#/#15
-ambiance:#/#0
-object:#/#SM_Tree_01#/#1,911224#/#0,5078125#/#0
-object:#/#SM_Tree_01#/#7,067474#/#1,015625#/#0
-object:#/#SM_Tree_01#/#2,887787#/#-2,03125#/#0

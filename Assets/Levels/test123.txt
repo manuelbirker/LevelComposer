@@ -1,5 +1,0 @@
-levelName:#/#test123
-levelLength:#/#15
-ambiance:#/#0
-object:#/#SM_Tree_01#/#3,313919#/#-1,468323#/#0
-object:#/#SM_Tree_01#/#5,444443#/#-2,25528#/#0
