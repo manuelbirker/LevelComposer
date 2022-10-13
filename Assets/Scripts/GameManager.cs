@@ -336,10 +336,7 @@ public class GameManager : MonoBehaviour
         {
             _gameState = GameState.PlayLevel;
         }
-        else
-        {
-            _gameState = GameState.PlayLevel;
-        }
+  
 
         if (_gameState == GameState.Editor)
         {
@@ -358,14 +355,6 @@ public class GameManager : MonoBehaviour
         }
 
 
-        Debug.Log(_gameState);
-        Debug.Log(levelName);
-
-
-        score = 0;
-        bpmController.levelLength = levelLength;
-        bpmController.Reset();
-
 
         if (_gameState == GameState.PlayLevel)
         {
@@ -378,9 +367,12 @@ public class GameManager : MonoBehaviour
             ingameUI.SetActive(false);
             editorUI.SetActive(true);
         }
+        
+        
 
-    
-        PlayerPrefs.DeleteAll();
+        score = 0;
+        bpmController.levelLength = levelLength;
+        bpmController.Reset();
     }
 
     public void ExitGame()

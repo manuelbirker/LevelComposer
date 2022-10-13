@@ -30,15 +30,20 @@ public class LevelManager : MonoBehaviour
     public const string BaseFolder = "Levels";
 
     public static string GetBasePath()
-    { Debug.Log(Application.persistentDataPath);
+    {
+#if UNITY_EDITOR
         string path = Application.dataPath + $"/{BaseFolder}/";
         string path1 = Application.dataPath + $"/{BaseFolder}";
         if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
         if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-  
         return path;
-
-       
+#else
+                        string path = Application.dataPath + $"/{BaseFolder}/";
+                        string path1 = Application.dataPath + $"/{BaseFolder}";
+                        if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
+                        if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                        return path;
+#endif
     }
 
 

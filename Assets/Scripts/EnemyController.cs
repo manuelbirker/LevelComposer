@@ -65,6 +65,8 @@ public class EnemyController : MonoBehaviour
 
         if (GameManager.Instance._player)
         {
+        
+        
             player = GameObject.Find("Player").transform;
 
 

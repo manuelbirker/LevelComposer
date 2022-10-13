@@ -1249,8 +1249,11 @@ MonoBehaviour:
   isGrounded: 1
   direction: 1
   anim: {fileID: 4794001880935326896}
+  life: 3
+  lifeText: {fileID: 0}
   deathSound: {fileID: 8300000, guid: e0c8e125f8b763444bf2a0f85a09f1d6, type: 3}
   aS: {fileID: -6624990611005763500}
+  canJump: 1
   groundCheck: {fileID: 5058424675742786035}
 --- !u!54 &4675828051750197022
 Rigidbody:
@@ -1300,7 +1303,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.656
+  m_Volume: 0.335
   m_Pitch: 1
   Loop: 0
   Mute: 0

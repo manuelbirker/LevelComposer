@@ -30,13 +30,19 @@ public class MainMenuController : MonoBehaviour
 
     public static string GetBasePath()
     {
-        Debug.Log(Application.persistentDataPath);
+#if UNITY_EDITOR
         string path = Application.dataPath + $"/{BaseFolder}/";
         string path1 = Application.dataPath + $"/{BaseFolder}";
         if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
         if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-        Debug.Log(path);
         return path;
+#else
+                        string path = Application.dataPath + $"/{BaseFolder}/";
+                        string path1 = Application.dataPath + $"/{BaseFolder}";
+                        if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
+                        if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                        return path;
+#endif
     }
 
 
@@ -55,7 +61,7 @@ public class MainMenuController : MonoBehaviour
 
         levels.ClearOptions();
         string filePath = GetBasePath();
- levels.options.Add(new TMP_Dropdown.OptionData(" "));
+        levels.options.Add(new TMP_Dropdown.OptionData(" "));
         foreach (string file in System.IO.Directory.GetFiles(filePath))
         {
             string[] _file = file.Split("/");
@@ -104,7 +110,7 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
 
-    { 
+    {
         PlayerPrefs.DeleteAll();
     }
 
