@@ -39,6 +39,16 @@ public class CamMoveController : MonoBehaviour
 
         Vector3 input = new Vector3(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed, 0);
 
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {speed = 7f;
+        }
+        else
+        {
+            speed = 5f;
+        }
+
+
         if (transform.position.x < minX)
         {
             transform.position = new Vector3(minX + speed, transform.position.y, 0);

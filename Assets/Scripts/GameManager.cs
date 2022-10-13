@@ -322,6 +322,13 @@ public class GameManager : MonoBehaviour
                 gameObj.gameObject.transform.position = gameObj.gameObject.GetComponent<EnemyController>().startPos;
             }
         }
+        
+        
+        Camera.main.GetComponent<AudioHighPassFilter>().enabled = false;
+        Camera.main.GetComponent<AudioLowPassFilter>().enabled = false;
+        
+        
+        
     }
 
 
