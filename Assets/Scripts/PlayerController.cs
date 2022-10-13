@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody = GetComponent<Rigidbody>();
 
 
-        if (GameManager.Instance._gameState != GameManager.GameState.PlayLevel)
+        if (GameManager.Instance._gameState == GameManager.GameState.PlayLevel)
         {
             lifeText = GameObject.Find("LifeText").transform.GetComponent<TMP_Text>();
         }
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         IsGrounded();
-        if (GameManager.Instance._gameState != GameManager.GameState.PlayLevel)
+        if (GameManager.Instance._gameState == GameManager.GameState.PlayLevel)
         {
             lifeText.text = "Life: " + life.ToString();
         }
