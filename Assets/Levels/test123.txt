@@ -1,8 +1,5 @@
 levelName:#/#test123
-levelLength:#/#30
-ambiance:#/#2
-object:#/#Floor6#/#4,337311#/#0,5789032#/#0
-object:#/#Floor6#/#7,082031#/#0,02228546#/#0
-object:#/#Floor6#/#9,749985#/#0,5980988#/#0
-object:#/#Goal#/#9,980301#/#0,7132645#/#0
-object:#/#Start#/#3,95343#/#0,6940689#/#0
+levelLength:#/#15
+ambiance:#/#0
+object:#/#SM_Tree_01#/#3,313919#/#-1,468323#/#0
+object:#/#SM_Tree_01#/#5,444443#/#-2,25528#/#0

@@ -118,7 +118,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -213,3 +213,5 @@ MonoBehaviour:
   playOnTick: {fileID: 8300000, guid: 773a7ca597900374db5f11f56b27ac8d, type: 3}
   playOnTouch: {fileID: 0}
   toolTip: 
+  startVolume: 0
+  endVolume: 0

@@ -141,7 +141,6 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
 
-      
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = (int)Mathf.Round(fps);
@@ -202,7 +201,7 @@ public class GameManager : MonoBehaviour
     {
         editorUI.SetActive(false);
         settingsUI.SetActive(false);
-        
+
         start = GameObject.Find("Start");
         goal = GameObject.Find("Goal");
 
@@ -289,10 +288,6 @@ public class GameManager : MonoBehaviour
                 gameObj.gameObject.GetComponent<EnemyController>().killed = false;
                 gameObj.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 //gameObj.gameObject.transform.position = gameObj.gameObject.GetComponent<EnemyController>().startPos;
-                
-    
-                
-                
             }
         }
     }
@@ -332,17 +327,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
-        
         if (PlayerPrefs.GetString("whichOption") == "Editor")
         {
             _gameState = GameState.Editor;
         }
 
-        if (PlayerPrefs.GetString("whichOption") == "PlayLevel")
+        else if (PlayerPrefs.GetString("whichOption") == "PlayLevel")
         {
             _gameState = GameState.PlayLevel;
-     
+        }
+        else
+        {
+            _gameState = GameState.PlayLevel;
         }
 
         if (_gameState == GameState.Editor)
@@ -350,21 +346,18 @@ public class GameManager : MonoBehaviour
             levelName = "NewLevel_" + Random.Range(0, 99999);
             levelNameInput.text = levelName;
         }
-        
-        
-        
-        if (_gameState == GameState.PlayLevel)
+        else if (_gameState == GameState.PlayLevel)
         {
             levelName = PlayerPrefs.GetString("whichLevel");
-            lm.loadLevelName =levelName ;
-        
-            
+            lm.loadLevelName = levelName;
+
+
             lm.LoadLevel();
-            
+
             PlayMode();
         }
-        
-        
+
+
         Debug.Log(_gameState);
         Debug.Log(levelName);
 
@@ -376,7 +369,6 @@ public class GameManager : MonoBehaviour
 
         if (_gameState == GameState.PlayLevel)
         {
-        
             ingameUI.SetActive(true);
             editorUI.SetActive(false);
         }
@@ -386,6 +378,9 @@ public class GameManager : MonoBehaviour
             ingameUI.SetActive(false);
             editorUI.SetActive(true);
         }
+
+    
+        PlayerPrefs.DeleteAll();
     }
 
     public void ExitGame()

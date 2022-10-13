@@ -27,22 +27,18 @@ public class MainMenuController : MonoBehaviour
 
     public const string BaseFolder = "Levels";
 
+
     public static string GetBasePath()
     {
-        #if UNITY_EDITOR
-                string path = Application.dataPath + $"/{BaseFolder}/";
-                string path1 = Application.dataPath + $"/{BaseFolder}";
-                if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
-                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-                return path;
-        #else
-                        string path = Application.dataPath + $"/{BaseFolder}/";
-                        string path1 = Application.dataPath + $"/{BaseFolder}";
-                        if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
-                        if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-                        return path;
-        #endif
+        Debug.Log(Application.persistentDataPath);
+        string path = Application.dataPath + $"/{BaseFolder}/";
+        string path1 = Application.dataPath + $"/{BaseFolder}";
+        if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
+        if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+        Debug.Log(path);
+        return path;
     }
+
 
     public void ChangeSelectedLevel(string lvl)
     {
@@ -63,8 +59,11 @@ public class MainMenuController : MonoBehaviour
         foreach (string file in System.IO.Directory.GetFiles(filePath))
         {
             string[] _file = file.Split("/");
-            string[] __file = _file[2].Split(".");
-            string ___file = __file[0];
+
+            string __file = _file[_file.Length - 1];
+
+            string ___file = __file.Replace(".txt", "");
+
 
             levels.options.Add(new TMP_Dropdown.OptionData(___file));
         }
@@ -106,9 +105,7 @@ public class MainMenuController : MonoBehaviour
     private void Start()
 
     {
- 
-        PlayerPrefs.SetString("whichOption", "");
-        PlayerPrefs.SetString("whichLevel", "");
+        PlayerPrefs.DeleteAll();
     }
 
     public void LoadLevel()

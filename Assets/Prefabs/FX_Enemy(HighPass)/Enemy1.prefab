@@ -396,6 +396,8 @@ MonoBehaviour:
   playOnTick: {fileID: 0}
   playOnTouch: {fileID: 8300000, guid: e0c8e125f8b763444bf2a0f85a09f1d6, type: 3}
   toolTip: HiPass Filter
+  startVolume: 0
+  endVolume: 0
 --- !u!82 &7946009076037252768
 AudioSource:
   m_ObjectHideFlags: 0
@@ -511,14 +513,11 @@ MonoBehaviour:
   activated: 0
   killed: 0
   skin: {fileID: 1023402705930348}
-  rb: {fileID: 0}
-  dir: 1
-  facingRight: 1
-  localScale: {x: 1, y: 1, z: 1}
   distance: 0
   distanceActive: 5
   player: {fileID: 0}
   effectActive: 0
+  mixer: {fileID: 0}
 --- !u!54 &-1992930030159628836
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -533,7 +532,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!135 &8131543717635104913
 SphereCollider:

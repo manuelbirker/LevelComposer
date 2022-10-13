@@ -116,6 +116,9 @@ MonoBehaviour:
   canWobble: 1
   playOnTick: {fileID: 8300000, guid: b9a7fd414f2a5a64ea991f1f1028203a, type: 3}
   playOnTouch: {fileID: 0}
+  toolTip: 
+  startVolume: 0
+  endVolume: 0
 --- !u!82 &8123090351853022379
 AudioSource:
   m_ObjectHideFlags: 0
@@ -128,7 +131,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 78494a5807668a24b8e2c937cd37c0da, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.344
+  m_Volume: 0.282
   m_Pitch: 1
   Loop: 0
   Mute: 0

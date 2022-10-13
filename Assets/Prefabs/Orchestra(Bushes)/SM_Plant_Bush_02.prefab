@@ -98,7 +98,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 78494a5807668a24b8e2c937cd37c0da, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.566
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -199,6 +199,8 @@ MonoBehaviour:
   playOnTick: {fileID: 8300000, guid: 69524216259623d4290b089352dbad75, type: 3}
   playOnTouch: {fileID: 0}
   toolTip: 
+  startVolume: 0
+  endVolume: 0
 --- !u!65 &3827184403728201815
 BoxCollider:
   m_ObjectHideFlags: 0

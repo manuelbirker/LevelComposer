@@ -116,6 +116,9 @@ MonoBehaviour:
   canWobble: 1
   playOnTick: {fileID: 8300000, guid: b3e8727733a0d474092f27489a856f1b, type: 3}
   playOnTouch: {fileID: 0}
+  toolTip: 
+  startVolume: 0
+  endVolume: 0
 --- !u!82 &-6676203023988314088
 AudioSource:
   m_ObjectHideFlags: 0

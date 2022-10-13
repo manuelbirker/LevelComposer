@@ -117,6 +117,8 @@ MonoBehaviour:
   playOnTick: {fileID: 8300000, guid: 8c60bb1a8192bbc479932be5af50cdba, type: 3}
   playOnTouch: {fileID: 0}
   toolTip: Taiko Drum
+  startVolume: 0
+  endVolume: 0
 --- !u!82 &9152275057001554489
 AudioSource:
   m_ObjectHideFlags: 0
@@ -129,7 +131,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 78494a5807668a24b8e2c937cd37c0da, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.613
+  m_Volume: 0.447
   m_Pitch: 1
   Loop: 0
   Mute: 0

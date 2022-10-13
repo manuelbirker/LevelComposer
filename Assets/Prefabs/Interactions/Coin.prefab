@@ -4852,7 +4852,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 78494a5807668a24b8e2c937cd37c0da, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.619
+  m_Volume: 0.368
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4953,3 +4953,5 @@ MonoBehaviour:
   playOnTick: {fileID: 0}
   playOnTouch: {fileID: 8300000, guid: ab2f97475982b784785a92e271423605, type: 3}
   toolTip: Coin
+  startVolume: 0
+  endVolume: 0

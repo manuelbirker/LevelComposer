@@ -112,7 +112,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 78494a5807668a24b8e2c937cd37c0da, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.597
+  m_Volume: 0.385
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -213,3 +213,5 @@ MonoBehaviour:
   playOnTick: {fileID: 8300000, guid: 54ff1e62d3c3d86459997b0ff8fadfdf, type: 3}
   playOnTouch: {fileID: 0}
   toolTip: Orchestra Kick
+  startVolume: 0
+  endVolume: 0

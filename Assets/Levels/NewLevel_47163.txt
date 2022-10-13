@@ -1,0 +1,3 @@
+levelName:#/#NewLevel_47163
+levelLength:#/#15
+ambiance:#/#0
