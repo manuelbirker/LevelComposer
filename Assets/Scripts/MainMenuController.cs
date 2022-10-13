@@ -55,7 +55,7 @@ public class MainMenuController : MonoBehaviour
 
         levels.ClearOptions();
         string filePath = GetBasePath();
-
+ levels.options.Add(new TMP_Dropdown.OptionData(" "));
         foreach (string file in System.IO.Directory.GetFiles(filePath))
         {
             string[] _file = file.Split("/");
@@ -104,7 +104,7 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
 
-    {
+    { 
         PlayerPrefs.DeleteAll();
     }
 
