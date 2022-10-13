@@ -17,6 +17,7 @@ public class TutorialController : MonoBehaviour
 
     public GameObject buttonPrev;
     public GameObject buttonNext;
+    public RenderTexture tex;
 
     private void Start()
     {
@@ -66,6 +67,9 @@ public class TutorialController : MonoBehaviour
 
     public void Change()
     {
+        
+        
+        
         player.clip = clips[currentSelected];
         tmpText.text = tutText[currentSelected];
         player.Play();

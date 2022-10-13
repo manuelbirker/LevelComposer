@@ -189,9 +189,10 @@ public class PlayerController : MonoBehaviour
 
         if (collision.transform.gameObject.name == "Goal")
         {
-            if (GameManager.Instance._gameState == GameManager.GameState.Editor)
+            if (GameManager.Instance._gameState == GameManager.GameState.PlayTest)
             {
                 GameManager.Instance.StopPlayTest();
+                return;
             }
 
 
@@ -200,7 +201,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            if (GameManager.Instance._gameState == GameManager.GameState.Editor)
+            if (GameManager.Instance._gameState == GameManager.GameState.PlayTest)
             {
                 return;
             }
@@ -217,6 +218,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
         if (GameManager.Instance._gameState == GameManager.GameState.Editor)
         {
             return;

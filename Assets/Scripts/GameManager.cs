@@ -288,7 +288,11 @@ public class GameManager : MonoBehaviour
                     gameObj.gameObject.GetComponent<EnemyController>()._movingSpeed;
                 gameObj.gameObject.GetComponent<EnemyController>().killed = false;
                 gameObj.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                gameObj.gameObject.transform.position = gameObj.gameObject.GetComponent<EnemyController>().startPos;
+                //gameObj.gameObject.transform.position = gameObj.gameObject.GetComponent<EnemyController>().startPos;
+                
+    
+                
+                
             }
         }
     }

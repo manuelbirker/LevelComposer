@@ -1,0 +1,8 @@
+levelName:#/#test123
+levelLength:#/#30
+ambiance:#/#2
+object:#/#Floor6#/#4,337311#/#0,5789032#/#0
+object:#/#Floor6#/#7,082031#/#0,02228546#/#0
+object:#/#Floor6#/#9,749985#/#0,5980988#/#0
+object:#/#Goal#/#9,980301#/#0,7132645#/#0
+object:#/#Start#/#3,95343#/#0,6940689#/#0

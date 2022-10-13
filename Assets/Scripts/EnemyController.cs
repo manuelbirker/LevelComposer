@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
         {
             if (!oC.isHeld)
             {
-                startPos = transform.position;
+                
                 _movingSpeed = movingSpeed;
             }
 
@@ -126,27 +126,39 @@ public class EnemyController : MonoBehaviour
                     this.gameObject.GetComponent<Collider>().enabled = false;
                     GameManager.Instance.score += 500;
                     movingSpeed = 0;
-                    transform.position = startPos;
+
                     GetComponent<Rigidbody>().isKinematic = true;
                     killed = true;
                     GetComponent<EnemyController>().skin.SetActive(false);
+
+
+                    if (this.gameObject.name == "Enemy2")
+                    {
+                        Camera.main.GetComponent<AudioLowPassFilter>().enabled = false;
+                    }
+
+                    if (this.gameObject.name == "Enemy1")
+                    {
+                        Camera.main.GetComponent<AudioHighPassFilter>().enabled = false;
+                    }
                 }
             }
             else
             {
                 Debug.Log("Death by enemy");
                 collision.transform.GetComponent<PlayerController>().ReSpawn();
-                
+
                 if (GameManager.Instance._gameState == GameManager.GameState.PlayTest)
                 {
                     return;
                 }
+
                 if (GameManager.Instance._gameState == GameManager.GameState.Editor)
                 {
                     return;
                 }
-                
-                
+
+
                 collision.transform.GetComponent<PlayerController>().SubLife();
             }
         }
