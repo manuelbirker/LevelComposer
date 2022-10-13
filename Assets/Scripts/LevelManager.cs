@@ -67,7 +67,9 @@ public class LevelManager : MonoBehaviour
 
     public void SaveToFile()
     {
-        string filePath = "Assets/Levels/" + GameManager.Instance.levelName + ".txt";
+        string filePath = Application.dataPath + "/Levels/" + GameManager.Instance.levelName + ".txt";
+
+
         StreamWriter writer = new StreamWriter(filePath, false);
 
 
@@ -99,8 +101,6 @@ public class LevelManager : MonoBehaviour
     }
 
 
-
-
     public void LoadLevel()
     {
         foreach (GameObject saveableObject in GameObject.FindGameObjectsWithTag("Saveable"))
@@ -110,7 +110,10 @@ public class LevelManager : MonoBehaviour
 
         ResetLevel();
 
-        string filePath = "Assets/Levels/" + loadLevelName + ".txt";
+
+        string 
+        filePath = Application.dataPath + "/Levels/" + loadLevelName + ".txt";
+
 
 
         StreamReader reader = new StreamReader(filePath);

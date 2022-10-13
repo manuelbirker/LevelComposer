@@ -168,14 +168,21 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
         }
-        
-        
-        
+
+
         if (collision.transform.gameObject.CompareTag("Death"))
         {
-            this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
-            aS.clip = deathSound;
-            aS.Play();
+            if (GameManager.Instance._gameState == GameManager.GameState.PlayTest)
+
+            {
+                return;
+            }
+
+            if (GameManager.Instance._gameState == GameManager.GameState.Editor)
+            {
+                return;
+            }
+
             SubLife();
         }
 
@@ -187,15 +194,29 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.StopPlayTest();
             }
 
+
+            if (GameManager.Instance._gameState == GameManager.GameState.Editor)
+            {
+                return;
+            }
+
+            if (GameManager.Instance._gameState == GameManager.GameState.Editor)
+            {
+                return;
+            }
+
             GameManager.Instance.PlayerWins();
             this.transform.GetComponent<Rigidbody>().isKinematic = true;
         }
-        
     }
 
 
     public void SubLife()
     {
+        if (GameManager.Instance._gameState == GameManager.GameState.PlayTest)
+        {
+            return;
+        }
         if (GameManager.Instance._gameState == GameManager.GameState.Editor)
         {
             return;
@@ -260,7 +281,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
     }
 
 

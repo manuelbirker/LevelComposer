@@ -136,6 +136,17 @@ public class EnemyController : MonoBehaviour
             {
                 Debug.Log("Death by enemy");
                 collision.transform.GetComponent<PlayerController>().ReSpawn();
+                
+                if (GameManager.Instance._gameState == GameManager.GameState.PlayTest)
+                {
+                    return;
+                }
+                if (GameManager.Instance._gameState == GameManager.GameState.Editor)
+                {
+                    return;
+                }
+                
+                
                 collision.transform.GetComponent<PlayerController>().SubLife();
             }
         }
