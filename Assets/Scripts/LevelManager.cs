@@ -26,6 +26,27 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+
+    public const string BaseFolder = "Levels";
+
+    public static string GetBasePath()
+    {
+        #if UNITY_EDITOR
+                string path = Application.dataPath + $"/{BaseFolder}/";
+                string path1 = Application.dataPath + $"/{BaseFolder}";
+                if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                return path;
+        #else
+                string path = Application.dataPath + $"/{BaseFolder}/";
+                string path1 = Application.dataPath + $"/{BaseFolder}";
+                if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                return path;
+        #endif
+    }
+
+
     public void FindSaveableAssets()
     {
         /**
@@ -67,7 +88,7 @@ public class LevelManager : MonoBehaviour
 
     public void SaveToFile()
     {
-        string filePath = Application.dataPath + "/Levels/" + GameManager.Instance.levelName + ".txt";
+        string filePath = GetBasePath()  + GameManager.Instance.levelName + ".txt";
 
 
         StreamWriter writer = new StreamWriter(filePath, false);
@@ -111,9 +132,8 @@ public class LevelManager : MonoBehaviour
         ResetLevel();
 
 
-        string 
-        filePath = Application.dataPath + "/Levels/" + loadLevelName + ".txt";
-
+        string
+            filePath = GetBasePath() + loadLevelName + ".txt";
 
 
         StreamReader reader = new StreamReader(filePath);

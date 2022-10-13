@@ -25,10 +25,24 @@ public class MainMenuController : MonoBehaviour
 
     public string whichOption;
 
-    private void Awake()
-    {
-    }
+    public const string BaseFolder = "Levels";
 
+    public static string GetBasePath()
+    {
+        #if UNITY_EDITOR
+                string path = Application.dataPath + $"/{BaseFolder}/";
+                string path1 = Application.dataPath + $"/{BaseFolder}";
+                if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                return path;
+        #else
+                        string path = Application.dataPath + $"/{BaseFolder}/";
+                        string path1 = Application.dataPath + $"/{BaseFolder}";
+                        if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
+                        if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                        return path;
+        #endif
+    }
 
     public void ChangeSelectedLevel(string lvl)
     {
@@ -44,7 +58,7 @@ public class MainMenuController : MonoBehaviour
         creditsUI.SetActive(false);
 
         levels.ClearOptions();
-        string filePath = "Assets/Levels/";
+        string filePath = GetBasePath();
 
         foreach (string file in System.IO.Directory.GetFiles(filePath))
         {
