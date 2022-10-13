@@ -1,3 +1,0 @@
-levelName:#/#NewLevel_11722
-levelLength:#/#15
-ambiance:#/#0

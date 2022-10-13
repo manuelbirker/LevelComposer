@@ -168,6 +168,29 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
         }
+        
+        
+        
+        if (collision.transform.gameObject.CompareTag("Death"))
+        {
+            this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
+            aS.clip = deathSound;
+            aS.Play();
+            SubLife();
+        }
+
+
+        if (collision.transform.gameObject.name == "Goal")
+        {
+            if (GameManager.Instance._gameState == GameManager.GameState.Editor)
+            {
+                GameManager.Instance.StopPlayTest();
+            }
+
+            GameManager.Instance.PlayerWins();
+            this.transform.GetComponent<Rigidbody>().isKinematic = true;
+        }
+        
     }
 
 
@@ -179,7 +202,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (life >= 0)
+        if (life <= 0)
         {
             this.transform.GetComponent<Rigidbody>().isKinematic = true;
             GameManager.Instance.PlayerLoses();
@@ -237,25 +260,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.gameObject.CompareTag("Death"))
-        {
-            this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
-            aS.clip = deathSound;
-            aS.Play();
-            SubLife();
-        }
 
-
-        if (collision.transform.gameObject.name == "Goal")
-        {
-            if (GameManager.Instance._gameState == GameManager.GameState.Editor)
-            {
-                GameManager.Instance.StopPlayTest();
-            }
-
-            GameManager.Instance.PlayerWins();
-            this.transform.GetComponent<Rigidbody>().isKinematic = true;
-        }
     }
 
 

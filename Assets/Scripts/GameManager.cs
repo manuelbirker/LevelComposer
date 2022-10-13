@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
 
-        DontDestroyOnLoad(gameObject);
+      
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = (int)Mathf.Round(fps);
@@ -200,13 +200,9 @@ public class GameManager : MonoBehaviour
 
     public void PlayMode()
     {
-
-        
-        
-        
-        
         editorUI.SetActive(false);
         settingsUI.SetActive(false);
+        
         start = GameObject.Find("Start");
         goal = GameObject.Find("Goal");
 
@@ -332,16 +328,41 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        
+        
+        if (PlayerPrefs.GetString("whichOption") == "Editor")
+        {
+            _gameState = GameState.Editor;
+        }
+
+        if (PlayerPrefs.GetString("whichOption") == "PlayLevel")
+        {
+            _gameState = GameState.PlayLevel;
+     
+        }
+
         if (_gameState == GameState.Editor)
         {
             levelName = "NewLevel_" + Random.Range(0, 99999);
             levelNameInput.text = levelName;
         }
-
+        
+        
+        
         if (_gameState == GameState.PlayLevel)
         {
+            levelName = PlayerPrefs.GetString("whichLevel");
+            lm.loadLevelName =levelName ;
+        
+            
+            lm.LoadLevel();
+            
             PlayMode();
         }
+        
+        
+        Debug.Log(_gameState);
+        Debug.Log(levelName);
 
 
         score = 0;
@@ -351,13 +372,15 @@ public class GameManager : MonoBehaviour
 
         if (_gameState == GameState.PlayLevel)
         {
-            PlayMode();
+        
             ingameUI.SetActive(true);
+            editorUI.SetActive(false);
         }
 
         if (_gameState == GameState.Editor)
         {
             ingameUI.SetActive(false);
+            editorUI.SetActive(true);
         }
     }
 

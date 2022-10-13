@@ -1,6 +1,0 @@
-levelName:#/#NewLevel_2993
-levelLength:#/#15
-ambiance:#/#0
-object:#/#Enemy1#/#1,375336#/#1,08445#/#0
-object:#/#Enemy2#/#4,139252#/#1,199615#/#0
-object:#/#Enemy2(Clone)#/#-7,319473#/#-0,8733215#/#0

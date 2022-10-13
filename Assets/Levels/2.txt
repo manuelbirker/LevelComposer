@@ -1,3 +1,0 @@
-levelName:#/#2
-levelLength:#/#16
-ambiance:#/#0

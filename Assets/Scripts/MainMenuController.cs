@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,7 +6,9 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -24,14 +27,12 @@ public class MainMenuController : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
     }
 
 
     public void ChangeSelectedLevel(string lvl)
     {
-        selectedLevel = lvl;
-        
+        selectedLevel = levels.options[levels.value].text;
     }
 
     public void PlayLevel()
@@ -60,6 +61,8 @@ public class MainMenuController : MonoBehaviour
     {
         whichOption = "Editor";
         selectedLevel = "";
+        PlayerPrefs.SetString("whichOption", whichOption);
+        PlayerPrefs.SetString("whichLevel", "");
         SceneManager.LoadScene("Editor");
 
         // TODO Load Editor
@@ -86,11 +89,19 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
     }
 
+    private void Start()
+
+    {
+ 
+        PlayerPrefs.SetString("whichOption", "");
+        PlayerPrefs.SetString("whichLevel", "");
+    }
 
     public void LoadLevel()
     {
         whichOption = "PlayLevel";
-
+        PlayerPrefs.SetString("whichOption", whichOption);
+        PlayerPrefs.SetString("whichLevel", selectedLevel);
         SceneManager.LoadScene("Editor");
     }
 
