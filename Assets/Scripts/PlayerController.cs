@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
 
     public int life = 3;
+    public TMP_Text lifeText;
 
     public AudioClip deathSound;
     public AudioSource aS;
@@ -32,11 +34,17 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         _playerRigidbody = GetComponent<Rigidbody>();
+
+
+        lifeText = GameObject.Find("LifeText").transform.GetComponent<TMP_Text>();
     }
+
 
     private void Update()
     {
         IsGrounded();
+
+        lifeText.text = "Life: " + life.ToString();
 
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -130,6 +138,12 @@ public class PlayerController : MonoBehaviour
             this.transform.gameObject.transform.position = GameManager.Instance.start.transform.position;
             aS.clip = deathSound;
             aS.Play();
+
+
+            if (GameManager.Instance._gameState == GameManager.GameState.PlayLevel)
+            {
+                SubLife();
+            }
         }
 
         if (collision.gameObject.name == "TrampolineUp")
@@ -167,23 +181,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             canJump = true;
-        }
-
-
-        if (collision.transform.gameObject.CompareTag("Death"))
-        {
-            if (GameManager.Instance._gameState == GameManager.GameState.PlayTest)
-
-            {
-                return;
-            }
-
-            if (GameManager.Instance._gameState == GameManager.GameState.Editor)
-            {
-                return;
-            }
-
-            SubLife();
         }
 
 
